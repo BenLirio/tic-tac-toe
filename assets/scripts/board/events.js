@@ -7,7 +7,7 @@ ui.init()
 
 const addHandlers = () => {
   for (let i = 0; i < 9; i++) {
-    $('#board-' + i).on('click', gameEngine.clickBoard)
+    $('#board-' + i).on('click', gameEngine.onClick)
   }
 }
 

@@ -1,6 +1,6 @@
 'use strict'
 
-const setBoardSpace = (id, value) => {
+const setBoardValue = (id, value) => {
   $('#board-' + id).text(value)
 }
 
@@ -32,7 +32,7 @@ const init = () => {
 }
 
 module.exports = {
-  setBoardSpace,
+  setBoardValue,
   getId,
   onInvalidMove,
   onValidMove,

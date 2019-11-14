@@ -1,34 +1,33 @@
 'use strict'
 
+/** Requirements **/
 const ui = require('./ui')
 
+/** Variables **/
 const state = {}
 
+/** Initialize **/
 const init = () => {
   state.over = false
   state.currentTurn = true
   state.board = new Array(9).fill('?')
 }
 
-/* Game logic that happens when the user clicks a spot on the board */
-const clickBoard = event => {
+/** On events **/
+const onClick = event => {
   if (!state.over) {
     const index = getIndexOfEvent(event)
     if (isValidMove(index)) {
       setBoardValue(index)
-      if (!checkWin()) {
-        changeTurn()
+      if (!isWin()) {
+        setTurn()
       }
     }
   }
 }
 
-const getIndexOfEvent = event => {
-  const id = ui.getId(event.target)
-  return getIndexFromId(id)
-}
-
-const checkWin = () => {
+/** get the game states **/
+const isWin = () => {
   const winSituations = [
     [
       true, true, true,
@@ -98,27 +97,33 @@ const isValidMove = index => {
   return valid
 }
 
-const changeTurn = () => {
+const getCurrentSymbol = () => {
+  return state.currentTurn ? 'x' : 'o'
+}
+
+/** set game states **/
+const setTurn = () => {
   state.currentTurn = !state.currentTurn
   ui.setTurn(state.currentTurn)
 }
 
 const setBoardValue = index => {
   state.board[index] = getCurrentSymbol()
-  ui.setBoardSpace(index, state.board[index])
+  ui.setBoardValue(index, state.board[index])
 }
 
-/* Takes in a board Id and return the index of the board */
+/** Utilities **/
+const getIndexOfEvent = event => {
+  const id = ui.getId(event.target)
+  return getIndexFromId(id)
+}
+
 const getIndexFromId = id => {
   return id.charAt(id.length - 1)
-}
-
-const getCurrentSymbol = () => {
-  return state.currentTurn ? 'x' : 'o'
 }
 
 module.exports = {
   init,
   state,
-  clickBoard
+  onClick
 }
