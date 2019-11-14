@@ -1,5 +1,10 @@
 HTML ID:
-#login
-#sign-up
+FORM ID's
+  #login
+  #sign-up
+  #change-password
+  #logout
+Section ID's
+NOTE: add "-page" to access section
 
 HTML Classes:
