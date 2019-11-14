@@ -9,21 +9,35 @@ const init = () => {
   state.board = new Array(9).fill('?')
 }
 
-const checkValidMove = index => {
-  if (state.board[index] === '?') {
-    state.board[index] = state.currentTurn ? 'x' : 'o'
-    state.currentTurn = !state.currentTurn
+/* Game logic that happens when the user clicks a spot on the board */
+const clickBoard = event => {
+  const id = ui.getId(event.target)
+  const index = getIndexFromId(id)
+  if (isValidMove(index)) {
+    setBoardValue(index)
+    changeTurn()
+    ui.setTurn(state.currentTurn)
     ui.setBoardSpace(index, state.board[index])
+  } else {
+    // Move invalid
   }
 }
 
-const clickBoard = event => {
-  const button = event.target
-  const buttonID = button.id
-  const index = buttonID.charAt(buttonID.length - 1)
-  // $('#' + button.id).text(button.id + gameEngine.state.currentTurn)
-  // state.currentTurn = !state.currentTurn
-  checkValidMove(index)
+const isValidMove = index => {
+  return state.board[index] === '?'
+}
+
+const changeTurn = () => {
+  state.currentTurn = !state.currentTurn
+}
+
+const setBoardValue = index => {
+  state.board[index] = state.currentTurn ? 'x' : 'o'
+}
+
+/* Takes in a board Id and return the index of the board */
+const getIndexFromId = id => {
+  return id.charAt(id.length - 1)
 }
 
 module.exports = {
