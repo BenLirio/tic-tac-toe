@@ -2,4 +2,11 @@
 
 const state = {}
 
-module.exports = state
+const init = () => {
+  state.currentTurn = 'x'
+}
+
+module.exports = {
+  init,
+  state
+}

@@ -3,7 +3,7 @@
 const boardPressed = event => {
   const button = event.target
   // jQuery now has access to clicked button
-  $('#' + button.id)
+  $('#' + button.id).text('a')
 }
 
 module.exports = {
