@@ -1,22 +1,26 @@
 'use strict'
 
+/** Initialize **/
+const init = () => {
+  $('#invalid-move').hide()
+  $('#winner').hide()
+}
+
+/** Setters **/
 const setBoardValue = (id, value) => {
   $('#board-' + id).text(value)
 }
 
-const getId = element => {
-  return element.id
+const setValidMove = state => {
+  const validText = $('#invalid-move')
+  if (state) {
+    validText.hide()
+  } else {
+    validText.show()
+  }
 }
 
-const onInvalidMove = () => {
-  $('#invalid-move').show()
-}
-
-const onValidMove = () => {
-  $('#invalid-move').hide()
-}
-
-const showWin = win => {
+const setWin = win => {
   $('#winner').show().text(win ? 'You Win' : 'You Loose')
 }
 
@@ -26,17 +30,16 @@ const setTurn = current => {
   $('#current-turn').text(text)
 }
 
-const init = () => {
-  $('#invalid-move').hide()
-  $('#winner').hide()
+/** Getters **/
+const getId = element => {
+  return element.id
 }
 
 module.exports = {
+  init,
   setBoardValue,
   getId,
-  onInvalidMove,
-  onValidMove,
-  showWin,
-  setTurn,
-  init
+  setValidMove,
+  setWin,
+  setTurn
 }

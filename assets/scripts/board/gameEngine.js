@@ -79,7 +79,7 @@ const isWin = () => {
     }
     if (win) {
       state.over = true
-      ui.showWin(state.currentTurn)
+      ui.setWin(state.currentTurn)
       return true
     }
   }
@@ -89,10 +89,10 @@ const isWin = () => {
 const isValidMove = index => {
   let valid = false
   if (state.board[index] === '?') {
-    ui.onValidMove()
+    ui.setValidMove(true)
     valid = true
   } else {
-    ui.onInvalidMove()
+    ui.setValidMove(false)
   }
   return valid
 }
