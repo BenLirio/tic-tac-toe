@@ -1,6 +1,6 @@
-# Project Title
+# Tic-Tac-Toe
 
-One Paragraph of project description goes here
+Simple game of Tic-Tac-Toe where you can sign in to save your game history.
 
 ## Getting Started
 
