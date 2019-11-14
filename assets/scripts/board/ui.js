@@ -30,6 +30,10 @@ const setTurn = current => {
   $('#current-turn').text(text)
 }
 
+const setTie = () => {
+  $('#winner').show().text('Tie')
+}
+
 /** Getters **/
 const getId = element => {
   return element.id
@@ -41,5 +45,6 @@ module.exports = {
   getId,
   setValidMove,
   setWin,
+  setTie,
   setTurn
 }

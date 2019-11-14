@@ -20,13 +20,29 @@ const onClick = event => {
     if (isValidMove(index)) {
       setBoardValue(index)
       if (!isWin()) {
-        setTurn()
+        if (!isTie()) {
+          setTurn()
+        }
       }
     }
   }
 }
 
 /** get the game states **/
+const isTie = () => {
+  let tie = true
+  for (const space of state.board) {
+    if (space === '?') {
+      tie = false
+    }
+  }
+  if (tie) {
+    ui.setTie()
+    state.over = true
+  }
+  return tie
+}
+
 const isWin = () => {
   const winSituations = [
     [
