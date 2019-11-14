@@ -1,7 +1,11 @@
 'use strict'
 
+const onLogin = event => {
+  event.preventDefault()
+}
+
 const addHandlers = () => {
-  console.log('added handlers')
+  $('#login').on('submit', onLogin)
 }
 
 module.exports = {
