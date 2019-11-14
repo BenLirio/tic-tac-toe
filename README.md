@@ -4,7 +4,9 @@ Simple game of Tic-Tac-Toe where you can sign in to save your game history.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+If you want to view a demo of the game go to benlirio.github.io/tic-tac-toe.
+To deploy for yourself download project. Initialize your own github repo.
+Run grunt serve or grunt deploy to make your own copy.
 
 ### Prerequisites
 
