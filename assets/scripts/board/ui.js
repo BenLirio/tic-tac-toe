@@ -31,7 +31,7 @@ const setTurn = current => {
 }
 
 const setTie = () => {
-  $('#winner').show().text('Tie')
+  $('#winner').show().text('Draw')
 }
 
 /** Getters **/
