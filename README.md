@@ -64,9 +64,9 @@ grunt deploy
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [bootstrap](http://www.bootstrap.com/) - The web framework used
+* [Webpack](https://webpack.com/) - Client framework
+* [grunt](https://grunt.com/) - Deployment framework
 
 ## Contributing
 
