@@ -1,5 +1,6 @@
 HTML ID:
 #login
 #sign-up
+#board-${id}
 
 HTML Classes:

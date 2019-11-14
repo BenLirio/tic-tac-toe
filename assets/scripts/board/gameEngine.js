@@ -6,7 +6,7 @@ const init = () => {
   state.currentTurn = true
 }
 
-const playerMoved = () => {
+const playerMoved = move => {
   state.currentTurn = !state.currentTurn
 }
 

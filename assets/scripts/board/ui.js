@@ -1,13 +1,12 @@
 'use strict'
 
-const boardData = require('./boardData')
-boardData.init()
+const gameEngine = require('./gameEngine')
+gameEngine.init()
 
 const boardPressed = event => {
   const button = event.target
-  // jQuery now has access to clicked button
-  $('#' + button.id).text(button.id + boardData.state.currentTurn)
-  boardData.playerMoved()
+  $('#' + button.id).text(button.id + gameEngine.state.currentTurn)
+  gameEngine.playerMoved(button.id)
 }
 
 module.exports = {
