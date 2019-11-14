@@ -1,14 +1,9 @@
 'use strict'
 
-const gameEngine = require('./gameEngine')
-gameEngine.init()
-
-const boardPressed = event => {
-  const button = event.target
-  $('#' + button.id).text(button.id + gameEngine.state.currentTurn)
-  gameEngine.playerMoved(button.id)
+const setBoardSpace = (id, value) => {
+  $('#board-' + id).text(value)
 }
 
 module.exports = {
-  boardPressed
+  setBoardSpace
 }
