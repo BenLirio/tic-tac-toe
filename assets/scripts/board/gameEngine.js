@@ -21,7 +21,7 @@ const clickBoard = event => {
       setBoardValue(index)
       ui.setBoardSpace(index, state.board[index])
       if (checkWin()) {
-        ui.showWin(state.current)
+        ui.showWin(state.currentTurn)
       } else {
         // Game still playing
         changeTurn()
