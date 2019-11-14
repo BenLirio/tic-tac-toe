@@ -13,25 +13,19 @@ const init = () => {
 /* Game logic that happens when the user clicks a spot on the board */
 const clickBoard = event => {
   if (!state.over) {
-    // No one has won yet
-    const id = ui.getId(event.target)
-    const index = getIndexFromId(id)
+    const index = getIndexOfEvent(event)
     if (isValidMove(index)) {
-      ui.onValidMove()
       setBoardValue(index)
-      ui.setBoardSpace(index, state.board[index])
-      if (checkWin()) {
-        ui.showWin(state.currentTurn)
-      } else {
-        // Game still playing
+      if (!checkWin()) {
         changeTurn()
-        ui.setTurn(state.currentTurn)
-        // show whose turn
       }
-    } else {
-      ui.onInvalidMove()
     }
   }
+}
+
+const getIndexOfEvent = event => {
+  const id = ui.getId(event.target)
+  return getIndexFromId(id)
 }
 
 const checkWin = () => {
@@ -86,6 +80,7 @@ const checkWin = () => {
     }
     if (win) {
       state.over = true
+      ui.showWin(state.currentTurn)
       return true
     }
   }
@@ -93,15 +88,24 @@ const checkWin = () => {
 }
 
 const isValidMove = index => {
-  return state.board[index] === '?'
+  let valid = false
+  if (state.board[index] === '?') {
+    ui.onValidMove()
+    valid = true
+  } else {
+    ui.onInvalidMove()
+  }
+  return valid
 }
 
 const changeTurn = () => {
   state.currentTurn = !state.currentTurn
+  ui.setTurn(state.currentTurn)
 }
 
 const setBoardValue = index => {
   state.board[index] = getCurrentSymbol()
+  ui.setBoardSpace(index, state.board[index])
 }
 
 /* Takes in a board Id and return the index of the board */
