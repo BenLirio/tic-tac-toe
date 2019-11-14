@@ -1,9 +1,9 @@
 HTML ID:
 FORM ID's
-  #login
+  #sign-in
   #sign-up
   #change-password
-  #logout
+  #sign-out
 Section ID's
 NOTE: add "-page" to access section
 
