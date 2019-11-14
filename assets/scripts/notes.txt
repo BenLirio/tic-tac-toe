@@ -2,5 +2,8 @@ HTML ID:
 #login
 #sign-up
 #board-${id}
+#current-turn
+#invalid-move
+
 
 HTML Classes:

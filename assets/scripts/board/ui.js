@@ -8,12 +8,35 @@ const getId = element => {
   return element.id
 }
 
-const setTurn = turn => {
+const onInvalidMove = () => {
+  $('#invalid-move').show()
+}
 
+const onValidMove = () => {
+  $('#invalid-move').hide()
+}
+
+const showWin = win => {
+  $('#winner').show().text(win ? 'You Loose' : 'You Win')
+}
+
+const setTurn = current => {
+  const letter = current ? 'X' : 'O'
+  const text = 'Current turn: ' + letter
+  $('#current-turn').text(text)
+}
+
+const init = () => {
+  $('#invalid-move').hide()
+  $('#winner').hide()
 }
 
 module.exports = {
   setBoardSpace,
   getId,
-  setTurn
+  onInvalidMove,
+  onValidMove,
+  showWin,
+  setTurn,
+  init
 }

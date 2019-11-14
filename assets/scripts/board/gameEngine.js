@@ -5,24 +5,32 @@ const ui = require('./ui')
 const state = {}
 
 const init = () => {
+  state.over = false
   state.currentTurn = true
   state.board = new Array(9).fill('?')
 }
 
 /* Game logic that happens when the user clicks a spot on the board */
 const clickBoard = event => {
-  const id = ui.getId(event.target)
-  const index = getIndexFromId(id)
-  if (isValidMove(index)) {
-    setBoardValue(index)
-    if (checkWin()) {
-      // Show win
+  if (!state.over) {
+    // No one has won yet
+    const id = ui.getId(event.target)
+    const index = getIndexFromId(id)
+    if (isValidMove(index)) {
+      ui.onValidMove()
+      setBoardValue(index)
+      ui.setBoardSpace(index, state.board[index])
+      if (checkWin()) {
+        ui.showWin(state.current)
+      } else {
+        // Game still playing
+        changeTurn()
+        ui.setTurn(state.currentTurn)
+        // show whose turn
+      }
+    } else {
+      ui.onInvalidMove()
     }
-    changeTurn()
-    ui.setTurn(state.currentTurn)
-    ui.setBoardSpace(index, state.board[index])
-  } else {
-    // Move invalid
   }
 }
 
@@ -77,6 +85,7 @@ const checkWin = () => {
       }
     }
     if (win) {
+      state.over = true
       return true
     }
   }
