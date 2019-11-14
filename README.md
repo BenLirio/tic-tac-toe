@@ -10,10 +10,14 @@ Run grunt serve or grunt deploy to make your own copy.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+This project uses
+Webpack
+grunt
+bootstrap
+jQuery
 
 ```
-Give examples
+npm install
 ```
 
 ### Installing
@@ -36,7 +40,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+grunt test
 
 ### Break down into end to end tests
 
@@ -56,7 +60,7 @@ Give an example
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+grunt deploy
 
 ## Built With
 
