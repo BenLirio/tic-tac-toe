@@ -4,50 +4,36 @@ const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
 
-const signIn = event => {
+const Form = function (action, res, err) {
+  this.action = action
+  this.res = res || console.log
+  this.err = err || console.log
+}
+
+Form.prototype.submit = function (event) {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  api.signIn(formData)
-    .then((res) => {
-      console.log(res.user)
-      store.user = res.user
-    })
-    .catch(console.log)
+  api.ajax({action: this.action, formData})
+    .then(this.res)
+    .catch(this.err)
 }
-
-const onSignUp = () => {
-  event.preventDefault()
-  const form = event.target
-  const formData = getFormFields(form)
-  api.signUp(formData)
-    .then(console.log)
-    .catch(console.log)
+const setUser = res => {
+  store.user = res.user
 }
-
-const onChangePassword = () => {
-  event.preventDefault()
-  const form = event.target
-  const formData = getFormFields(form)
-  api.changePassword(formData)
-    .then(console.log)
-    .catch(console.log)
+const deleteUser = () => {
+  store.user = {}
 }
-
-const signOut = () => {
-  event.preventDefault()
-  api.signOut()
-    .then(() => {
-      store.user = {}
-    })
-    .catch(console.log)
-}
+const signIn = new Form('sign-in', setUser)
+const signUp = new Form('sign-up')
+const changePassword = new Form('change-password')
+const signOut = new Form('sign-out', deleteUser)
 
 const addHandlers = () => {
-  $('#sign-in').on('submit', signIn)
-  $('#sign-up').on('submit', onSignUp)
-  $('#change-password').on('submit', onChangePassword)
-  $('#logout').on('submit', signOut)
+  $('#sign-in').on('submit', signIn.submit.bind(signIn))
+  $('#sign-up').on('submit', signUp.submit.bind(signUp))
+  $('#change-password').on('submit', changePassword.submit.bind(changePassword))
+  $('#logout').on('submit', signOut.submit.bind(signOut))
 }
 
 module.exports = {
