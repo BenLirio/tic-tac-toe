@@ -3,12 +3,13 @@
 const config = require('../config')
 const store = require('../store')
 
-const ajax = ({name, data}) => {
-  const url = config.apiUrl + '/' + name
+const ajax = (data) => {
+  console.log(data)
+  const url = config.apiUrl + '/' + data.action
   let method = ''
   let auth = false
   let headers = null
-  switch (name) {
+  switch (data.action) {
     case 'sign-up':
       method = 'POST'
       break
@@ -29,7 +30,7 @@ const ajax = ({name, data}) => {
       Authorization: `Token token=${store.user.token}`
     }
   }
-  return $.ajax({url, method, headers, data})
+  return $.ajax({url, method, headers, data: data.formData})
 }
 
 module.exports = {
