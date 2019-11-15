@@ -1,9 +1,14 @@
 HTML ID:
-#login
-#sign-up
-#board-${id}
-#current-turn
-#invalid-move
+FORM ID's
+  #sign-in
+  #sign-up
+  #change-password
+  #sign-out
+Section ID's
+NOTE: add "-page" to access section
 
+GAME BOARD
+  #current-turn
+  #invalid-move
 
 HTML Classes:

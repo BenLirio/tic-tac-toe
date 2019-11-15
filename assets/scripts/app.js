@@ -1,12 +1,8 @@
 'use strict'
-
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
-const boardEvents = require('./board/events')
-
-// use require without a reference to ensure a file is bundled
-// require('./example')
+// Require Authorization Events
+const authEvents = require('./auth/events')
 
 $(() => {
-  boardEvents.addHandlers()
+  /* Add Authorization Events */
+  authEvents.addHandlers()
 })
