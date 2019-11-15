@@ -6,6 +6,10 @@ FORM ID's
   #sign-out
 Section ID's
 NOTE: add "-page" to access section
+#menu-page
+
+menu
+  #play-game-button
 
 GAME BOARD
   #current-turn

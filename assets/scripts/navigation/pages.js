@@ -19,7 +19,8 @@ Page.prototype.show = function () {
 }
 
 pages.push(new Page('sign-in', 'sign-in-page', 'sign-up-page'))
-pages.push(new Page('menu', 'change-password-page', 'sign-out-page'))
+pages.push(new Page('menu', 'change-password-page', 'sign-out-page', 'menu-page'))
+pages.push(new Page('game', 'game-page'))
 
 const hide = (id) => {
   $('#' + id).hide()
