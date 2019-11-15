@@ -1,28 +1,24 @@
 'use strict'
 
-const setCurrentPage = name => {
-  pages.forEach((key, page) => {
-    console.log(key, page)
-    if (key === name) {
-      page.show()
-    } else {
-      page.hide()
-    }
-  })
+const Page = function (name, page) {
+  this.name = name
+  this.page = page
 }
 
-const _pages = {}
-const addPage = (name, page) => {
-  pages[name] = page
+const pageHandler = function () {
+
 }
 
-setUpPages = pages => {
-  for (const page of pages) {
-    _pages
-  }
+pageHandler.addPage = (name, ids) => {
+  this.pages.push(new Page(name, ids))
+}
+
+pageHandler.addPage('login', ['sign-in', 'sign-up'])
+
+pageHandler.setCurrentPage = function (curName) {
+
 }
 
 module.exports = {
-  setCurrentPage,
-  addPage
+  setCurrentPage: pageHandler.setCurrentPage
 }

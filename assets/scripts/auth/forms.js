@@ -1,8 +1,8 @@
 'use strict'
 
-const store = require('../../store')
-const api = require('../api')
-const getFormFields = require('../../../../lib/get-form-fields')
+const store = require('../store')
+const api = require('./api')
+const getFormFields = require('../../../lib/get-form-fields')
 
 const Form = function (data) {
   this.action = data.action
@@ -20,25 +20,23 @@ Form.prototype.submit = function (event) {
     .catch(this.err)
 }
 
-const FormFactory = function () {
+const forms = function () {
 }
 
-FormFactory.prototype.addForm = function (data) {
+forms.addForm = function (data) {
   this[data.name] = new Form(data)
 }
 
-const forms = new FormFactory()
-
-const setUser = res => {
+const onSignIn = res => {
   store.user = res.user
 }
-const deleteUser = () => {
+const onSignOut = () => {
   store.user = {}
 }
 
-forms.addForm({name: 'signIn', action: 'sign-in', res: setUser})
+forms.addForm({name: 'signIn', action: 'sign-in', res: onSignIn})
 forms.addForm({name: 'signUp', action: 'sign-up'})
 forms.addForm({name: 'changePassword', action: 'change-password'})
-forms.addForm({name: 'signOut', action: 'sign-out', res: deleteUser})
+forms.addForm({name: 'signOut', action: 'sign-out', res: onSignOut})
 
 module.exports = forms

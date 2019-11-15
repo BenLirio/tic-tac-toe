@@ -1,12 +1,33 @@
 'use strict'
 
-const forms = require('./formClasses/forms')
+const forms = require('./forms')
 
 const addHandlers = () => {
-  $('#sign-in').on('submit', forms.signIn.submit.bind(forms.signIn))
-  $('#sign-up').on('submit', forms.signUp.submit.bind(forms.signUp))
-  $('#change-password').on('submit', forms.changePassword.submit.bind(forms.changePassword))
-  $('#logout').on('submit', forms.signOut.submit.bind(forms.signOut))
+  const onSignIn = forms.signIn.submit
+  const onSignUp = forms.signUp.submit
+  const onChangePassword = forms.changePassword.submit
+  const onSignOut = forms.signOut.submit
+
+  $('#sign-in')
+    .on(
+      'submit',
+      onSignIn.bind(forms.signIn)
+    )
+  $('#sign-up')
+    .on(
+      'submit',
+      onSignUp.bind(forms.signUp)
+    )
+  $('#change-password')
+    .on(
+      'submit',
+      onChangePassword.bind(forms.changePassword)
+    )
+  $('#logout')
+    .on(
+      'submit',
+      onSignOut.bind(forms.signOut)
+    )
 }
 
 module.exports = {
