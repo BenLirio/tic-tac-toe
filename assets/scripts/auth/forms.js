@@ -30,16 +30,18 @@ forms.addForm = function (data) {
 
 const onSignIn = res => {
   store.user = res.user
-  ui.setCurrentPage('info')
+  ui.setCurrentPage('menu')
 }
 const onSignOut = () => {
   store.user = {}
-  ui.setCurrentPage('login')
+  ui.setCurrentPage('sign-in')
 }
 
 forms.addForm({name: 'signIn', action: 'sign-in', res: onSignIn})
 forms.addForm({name: 'signUp', action: 'sign-up'})
 forms.addForm({name: 'changePassword', action: 'change-password'})
 forms.addForm({name: 'signOut', action: 'sign-out', res: onSignOut})
+
+ui.setCurrentPage('sign-in')
 
 module.exports = forms

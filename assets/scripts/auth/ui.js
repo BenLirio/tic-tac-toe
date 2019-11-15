@@ -1,40 +1,56 @@
 'use strict'
 
-const Page = function (name, page) {
+// I will use an ID to refer to a pages
+// Get all the pages based on html
+// Set what each state should show
+// Hide all then show only what is needed
+
+const sections = []
+const makeSection = (index, item) => {
+  sections.push(item.id)
+}
+$('.page').each(makeSection)
+
+const pages = []
+
+const Page = function (name, ...ids) {
   this.name = name
-  this.ids = page
+  this.sections = []
+  ids.forEach(id => this.sections.push(id))
 }
 
-const pageHandler = {
-  pages: []
+Page.prototype.show = function () {
+  this.sections.forEach(show)
 }
 
-pageHandler.addPage = (name, ids) => {
-  pageHandler.pages.push(new Page(name, ids))
-}
+pages.push(new Page('sign-in', 'sign-in-page', 'sign-up-page'))
+pages.push(new Page('menu', 'change-password-page', 'sign-out-page'))
 
-pageHandler.addPage('login', ['sign-in-page', 'sign-up-page'])
-pageHandler.addPage('info', ['change-password-page', 'sign-out-page'])
-
-const hide = function (id) {
+const hide = (id) => {
   $('#' + id).hide()
 }
 
-const show = function (id) {
+const show = (id) => {
+  console.log(id)
   $('#' + id).show()
 }
 
-pageHandler.setCurrentPage = function (name) {
-  pageHandler.pages.forEach((page) => {
-    if (page.name === name) {
-      page.ids.forEach((id) => show(id))
-    } else {
-      page.ids.forEach((id) => hide(id))
-    }
-  })
+const hideSections = () => {
+  sections.forEach(hide)
 }
-pageHandler.setCurrentPage('login')
+
+const showPage = curName => {
+  const currentPage = pages.find(page => page.name === curName)
+  if (currentPage) {
+    currentPage.show()
+  }
+}
+
+const setCurrentPage = name => {
+  hideSections()
+  showPage(name)
+}
 
 module.exports = {
-  setCurrentPage: pageHandler.setCurrentPage
+  setCurrentPage
 }
