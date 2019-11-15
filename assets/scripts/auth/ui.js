@@ -31,7 +31,6 @@ const hide = (id) => {
 }
 
 const show = (id) => {
-  console.log(id)
   $('#' + id).show()
 }
 

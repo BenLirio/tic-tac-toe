@@ -4,7 +4,6 @@ const config = require('../config')
 const store = require('../store')
 
 const ajax = (data) => {
-  console.log(data)
   const url = config.apiUrl + '/' + data.action
   let method = ''
   let auth = false

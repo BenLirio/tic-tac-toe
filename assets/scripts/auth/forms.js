@@ -12,7 +12,6 @@ const Form = function (data) {
 }
 
 Form.prototype.submit = function (event) {
-  console.log(this.action)
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
