@@ -33,7 +33,7 @@ const onSignIn = res => {
 }
 const onSignOut = () => {
   store.user = {}
-  navigation.setCurrentPage('sign-in')
+  navigation.goBackPage()
 }
 
 forms.addForm({name: 'signIn', action: 'sign-in', res: onSignIn})

@@ -36,36 +36,6 @@ Navigation.prototype._showPage = function (name) {
   this.pages[name].show()
 }
 
-const navigation = new Navigation()
-
-
-navigation.addPage({
-  name: 'sign-in',
-  parent: null,
-  ids: [
-    'sign-in-page',
-    'sign-up-page'
-  ]
-})
-navigation.addPage({
-  name: 'menu',
-  parent: 'sign-in',
-  ids: [
-    'change-password-page',
-    'sign-out-page',
-    'menu-page'
-  ]
-})
-navigation.addPage({
-  name: 'game',
-  parent: 'menu',
-  ids: [
-    'game-page'
-  ]
-})
-
-
-
 const hide = (id) => {
   $('#' + id).hide()
 }
@@ -74,4 +44,4 @@ const show = (id) => {
   $('#' + id).show()
 }
 
-module.exports = navigation
+module.exports = Navigation

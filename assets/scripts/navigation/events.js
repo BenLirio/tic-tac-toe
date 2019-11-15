@@ -1,9 +1,9 @@
 'use strict'
 
-const pages = require('./pages')
+const navigation = require('./navigation')
 
 const addHandlers = function () {
-  $('.back').on('click', () => pages.goBackPage())
+  $('.back').on('click', () => navigation.goBackPage())
 }
 
 module.exports = {
