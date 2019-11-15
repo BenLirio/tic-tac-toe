@@ -17,8 +17,8 @@
       <section id="sign-in-page">
         <h1>Login</h1>
         <form id="sign-in">
-          <label><input type="email" placeholder="first.last@gmail.com"></label>
-          <label><input type="password" placeholder="password"></label>
+          <label><input name="credentials[email]" type="email" placeholder="first.last@gmail.com"></label>
+          <label><input name="credentials[password]" type="password" placeholder="password"></label>
           <input type="submit" value="Login">
         </form>
       </section>
@@ -28,9 +28,9 @@
       <section id="sign-up-page">
         <h1>Sign Up</h1>
         <form id="sign-up">
-          <label><input type="email" placeholder="first.last@gmail.com"></label>
-          <label><input type="password" placeholder="password"></label>
-          <label><input type="password" placeholder="Re-Enter password"></label>
+          <label><input name="credentials[email]" type="email" placeholder="first.last@gmail.com"></label>
+          <label><input name="credentials[password]" type="password" placeholder="password"></label>
+          <label><input name="credentials[password_confirmation]" type="password" placeholder="Re-Enter password"></label>
           <input type="submit" value="Create">
         </form>
       </section>
@@ -39,8 +39,8 @@
       <section id="change-password-page">
         <h1>Change Password</h1>
         <form id="change-password">
-          <label><input type="password" placeholder="Old Password"></label>
-          <label><input type="password" placeholder="New Password"></label>
+          <label><input name="passwords[old]" type="password" placeholder="Old Password"></label>
+          <label><input name="passwords[new]" type="password" placeholder="New Password"></label>
           <input type="submit" value="Change">
         </form>
       </section>
