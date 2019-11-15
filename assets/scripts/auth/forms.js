@@ -3,6 +3,7 @@
 const store = require('../store')
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
+const ui = require('./ui')
 
 const Form = function (data) {
   this.action = data.action
@@ -29,9 +30,11 @@ forms.addForm = function (data) {
 
 const onSignIn = res => {
   store.user = res.user
+  ui.setCurrentPage('info')
 }
 const onSignOut = () => {
   store.user = {}
+  ui.setCurrentPage('login')
 }
 
 forms.addForm({name: 'signIn', action: 'sign-in', res: onSignIn})

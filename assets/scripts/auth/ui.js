@@ -2,22 +2,38 @@
 
 const Page = function (name, page) {
   this.name = name
-  this.page = page
+  this.ids = page
 }
 
-const pageHandler = function () {
-
+const pageHandler = {
+  pages: []
 }
 
 pageHandler.addPage = (name, ids) => {
-  this.pages.push(new Page(name, ids))
+  pageHandler.pages.push(new Page(name, ids))
 }
 
-pageHandler.addPage('login', ['sign-in', 'sign-up'])
+pageHandler.addPage('login', ['sign-in-page', 'sign-up-page'])
+pageHandler.addPage('info', ['change-password-page', 'sign-out-page'])
 
-pageHandler.setCurrentPage = function (curName) {
-
+const hide = function (id) {
+  $('#' + id).hide()
 }
+
+const show = function (id) {
+  $('#' + id).show()
+}
+
+pageHandler.setCurrentPage = function (name) {
+  pageHandler.pages.forEach((page) => {
+    if (page.name === name) {
+      page.ids.forEach((id) => show(id))
+    } else {
+      page.ids.forEach((id) => hide(id))
+    }
+  })
+}
+pageHandler.setCurrentPage('login')
 
 module.exports = {
   setCurrentPage: pageHandler.setCurrentPage
