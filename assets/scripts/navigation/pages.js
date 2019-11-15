@@ -1,26 +1,70 @@
 'use strict'
 
-const sections = []
-const makeSection = (index, item) => {
-  sections.push(item.id)
-}
-$('.page').each(makeSection)
-
-const pages = []
-
-const Page = function (name, ...ids) {
-  this.name = name
-  this.sections = []
-  ids.forEach(id => this.sections.push(id))
+const Page = function (parent, ids) {
+  this.parent = parent
+  this.ids = ids
 }
 
 Page.prototype.show = function () {
-  this.sections.forEach(show)
+  this.ids.forEach(show)
+}
+const Navigation = function () {
+  this.currentPage = null
+  this.pages = {}
+  this.sections = []
+  $('.page').each((index, item) => this._makeSection(index, item))
+}
+Navigation.prototype.addPage = function (params) {
+  this.pages[params.name] = new Page(params.parent, params.ids)
 }
 
-pages.push(new Page('sign-in', 'sign-in-page', 'sign-up-page'))
-pages.push(new Page('menu', 'change-password-page', 'sign-out-page', 'menu-page'))
-pages.push(new Page('game', 'game-page'))
+Navigation.prototype.setCurrentPage = function (name) {
+  this.currentPage = this.pages[name]
+  this._showPage(name)
+}
+Navigation.prototype.goBackPage = function () {
+  this._showPage(this.currentPage.parent)
+}
+Navigation.prototype._makeSection = function (index, item) {
+  this.sections.push(item.id)
+}
+Navigation.prototype._hideSections = function () {
+  this.sections.forEach(hide)
+}
+Navigation.prototype._showPage = function (name) {
+  this._hideSections()
+  this.pages[name].show()
+}
+
+const navigation = new Navigation()
+
+
+navigation.addPage({
+  name: 'sign-in',
+  parent: null,
+  ids: [
+    'sign-in-page',
+    'sign-up-page'
+  ]
+})
+navigation.addPage({
+  name: 'menu',
+  parent: 'sign-in',
+  ids: [
+    'change-password-page',
+    'sign-out-page',
+    'menu-page'
+  ]
+})
+navigation.addPage({
+  name: 'game',
+  parent: 'menu',
+  ids: [
+    'game-page'
+  ]
+})
+
+
 
 const hide = (id) => {
   $('#' + id).hide()
@@ -30,22 +74,4 @@ const show = (id) => {
   $('#' + id).show()
 }
 
-const hideSections = () => {
-  sections.forEach(hide)
-}
-
-const showPage = curName => {
-  const currentPage = pages.find(page => page.name === curName)
-  if (currentPage) {
-    currentPage.show()
-  }
-}
-
-const setCurrentPage = name => {
-  hideSections()
-  showPage(name)
-}
-
-module.exports = {
-  setCurrentPage
-}
+module.exports = navigation

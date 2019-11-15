@@ -6,7 +6,6 @@ const pages = require('../navigation/pages')
 // Set what each state should show
 // Hide all then show only what is needed
 const setGamePage = () => {
-  console.log('setGame Page')
   pages.setCurrentPage('game')
 }
 
