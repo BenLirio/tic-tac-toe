@@ -1,81 +1,95 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Example</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-      <!-- LOGIN FORM -->
-      <section id="sign-in-page" class="page">
-        <h1>Login</h1>
-        <form id="sign-in">
-          <label><input name="credentials[email]" type="email" placeholder="first.last@gmail.com"></label>
-          <label><input name="credentials[password]" type="password" placeholder="password"></label>
-          <input type="submit" value="Login">
-        </form>
-      </section>
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
 
+<body>
 
-      <!-- SIGN UP FORM -->
-      <section id="sign-up-page" class="page">
-        <h1>Sign Up</h1>
-        <form id="sign-up">
-          <label><input name="credentials[email]" type="email" placeholder="first.last@gmail.com"></label>
-          <label><input name="credentials[password]" type="password" placeholder="password"></label>
-          <label><input name="credentials[password_confirmation]" type="password" placeholder="Re-Enter password"></label>
-          <input type="submit" value="Create">
-        </form>
-      </section>
+  <!-- SIGN IN FORM -->
+  <section id="sign-in-page" class="page">
+    <h1>Login</h1>
+    <form id="sign-in" novalidate>
+      <div class="form-group">
+        <input name="credentials[email]" type="email" class="form-control" placeholder="Enter email"required>
+        <div class="invalid-feedback">
+          Please enter email
+        </div>
+      </div>
+      <div class="form-group">
+        <input name="credentials[password]" type="password" class="form-control password" placeholder="password"required>
+        <div class="invalid-feedback">
+          Wrong Password
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Login" class="btn btn-primary">
+      </div>
+    </form>
+  </section>
 
-      <section id="menu-page" class="page">
-        <button id="play-game-button">Play game</button>
-      </section>
+  <!-- SIGN UP FORM -->
+  <section id="sign-up-page" class="page">
+    <h1>Sign Up</h1>
+    <form id="sign-up" novalidate>
+      <input name="credentials[email]" type="email" placeholder="first.last@gmail.com"required>
+      <input name="credentials[password]" type="password" placeholder="password"required>
+      <input name="credentials[password_confirmation]" type="password" placeholder="Re-Enter password"required>
+      <input type="submit" value="Create">
+    </form>
+  </section>
 
-      <!-- CHANGE PASSWORD FORM -->
-      <section id="change-password-page" class="page">
-        <h1>Change Password</h1>
-        <form id="change-password">
-          <label><input name="passwords[old]" type="password" placeholder="Old Password"></label>
-          <label><input name="passwords[new]" type="password" placeholder="New Password"></label>
-          <input type="submit" value="Change">
-        </form>
-      </section>
+  <section id="menu-page" class="page">
+    <button id="play-game-button">Play game</button>
+  </section>
 
-      <!-- LOGOUT FORM -->
-      <section id="sign-out-page" class="page">
-        <h1>Logout</h1>
-        <form id="logout">
-          <input type="submit" value="Logout">
-        </form>
-      </section>
+  <!-- CHANGE PASSWORD FORM -->
+  <section id="change-password-page" class="page">
+    <h1>Change Password</h1>
+    <form id="change-password">
+      <label><input name="passwords[old]" type="password" placeholder="Old Password"></label>
+      <label><input name="passwords[new]" type="password" placeholder="New Password"></label>
+      <input type="submit" value="Change">
+    </form>
+  </section>
 
-      <!-- GAME BOARD -->
-      <section id="game-page" class="page">
-        <button class="back">back</button>
-        <h1>Game</h1>
-        <h2 id="current-turn">Current Turn</h2>
-        <h3 id="invalid-move">Invalid Move</h3>
-        <button id="board-0">.</button>
-        <button id="board-1">.</button>
-        <button id="board-2">.</button>
-        <br>
-        <button id="board-3">.</button>
-        <button id="board-4">.</button>
-        <button id="board-5">.</button>
-        <br>
-        <button id="board-6">.</button>
-        <button id="board-7">.</button>
-        <button id="board-8">.</button>
-        <h1 id="winner">Winner</h1>
-      </section>
+  <!-- LOGOUT FORM -->
+  <section id="sign-out-page" class="page">
+    <h1>Logout</h1>
+    <form id="logout">
+      <input type="submit" value="Logout">
+    </form>
+  </section>
 
-    </body>
+  <!-- GAME BOARD -->
+  <section id="game-page" class="page">
+    <button class="back">back</button>
+    <h1>Game</h1>
+    <h2 id="current-turn">Current Turn</h2>
+    <h3 id="invalid-move">Invalid Move</h3>
+    <button id="board-0">.</button>
+    <button id="board-1">.</button>
+    <button id="board-2">.</button>
+    <br>
+    <button id="board-3">.</button>
+    <button id="board-4">.</button>
+    <button id="board-5">.</button>
+    <br>
+    <button id="board-6">.</button>
+    <button id="board-7">.</button>
+    <button id="board-8">.</button>
+    <h1 id="winner">Winner</h1>
+  </section>
+
+</body>
+
 </html>

@@ -25,7 +25,7 @@ const getFormFields = require('<path to lib>/get-form-fields.js')
 
 $('#create-book').on('submit', function (event) {
   event.preventDefault()
-
+  
   const form = event.target
   const bookData = getFormFields(form)
 })

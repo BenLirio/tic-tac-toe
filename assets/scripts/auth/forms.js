@@ -13,11 +13,18 @@ const Form = function (data) {
 
 Form.prototype.submit = function (event) {
   event.preventDefault()
-  const form = event.target
-  const formData = getFormFields(form)
-  api.ajax({action: this.action, formData})
-    .then(this.res)
-    .catch(this.err)
+  event.stopPropagation()
+  console.log('VALID:', event.target.checkValidity())
+  if (event.target.checkValidity()) {
+    const form = event.target
+    const formData = getFormFields(form)
+    api.ajax({action: this.action, formData})
+      .then(this.res.bind(event.target))
+      .catch(this.err.bind(event.target))
+  } else {
+    event.target.classList.add('is-invalid')
+    event.target.classList.add('was-validated')
+  }
 }
 
 const forms = function () {
@@ -36,9 +43,14 @@ const onSignOut = () => {
   console.log('SIGN OUT CLICKED')
   navigationHandler.goBackPage()
 }
+const invalid = function (res) {
+  $('#' + this.id).find('.password').val('')
+  this.classList.add('is-invalid')
+  this.classList.add('was-validated')
+}
 
-forms.addForm({name: 'signIn', action: 'sign-in', res: onSignIn})
-forms.addForm({name: 'signUp', action: 'sign-up'})
+forms.addForm({name: 'signIn', action: 'sign-in', res: onSignIn, err: invalid})
+forms.addForm({name: 'signUp', action: 'sign-up', err: invalid})
 forms.addForm({name: 'changePassword', action: 'change-password'})
 forms.addForm({name: 'signOut', action: 'sign-out', res: onSignOut})
 
