@@ -5,7 +5,7 @@ const pages = require('./pages')
 
 const addHandlers = function () {
   $('.back').on('click', () => handler.goBackPage())
-  $('.page').each(pages.initPages)
+  $('.page').each(pages.addPage)
 }
 
 module.exports = {

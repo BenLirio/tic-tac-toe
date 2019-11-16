@@ -1,14 +1,21 @@
 'use strict'
 
-const Page = function (name, parent) {
-  this.name = name
-  this.parent = parent
+const Page = function (params = {}) {
+  Object.assign(this, params)
 }
 
-const initPages = function () {
-  console.log('setting up page:', this)
+const PageHandler = function () {
+  this.pages = {}
 }
+const pageHandler = new PageHandler()
 
-module.exports = {
-  initPages
-}
+PageHandler.prototype.addPage = function (...params) {
+  const page = params[1]
+  const name = page.getAttribute('name')
+  const parent = page.getAttribute('parent')
+  this.pages[name] = new Page({name, parent})
+}.bind(pageHandler)
+
+
+
+module.exports = pageHandler
