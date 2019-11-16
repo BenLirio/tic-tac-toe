@@ -2,6 +2,7 @@
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 const navigationHandler = require('../navigation/handler')
+const store = require('../store')
 // customError
 // patternMismatch
 // rangeOverflow
@@ -11,10 +12,6 @@ const navigationHandler = require('../navigation/handler')
 // typeMismatch
 // valueMissing
 // valid
-
-
-
-
 
 const FormEvent = function (params) {
   this.res = console.log
@@ -26,8 +23,31 @@ const formEvents = {}
 
 // Initialize the form events
 const initializeForm = function () {
-  const res = console.log
-  const err = console.error
+  if (this.querySelector('.form-control')) {
+    const button = this.querySelector('.btn')
+    button.classList.add('disabled')
+    button.setAttribute('disabled', 'true')
+  }
+
+  const res = function (data) {
+    Object.assign(store, data)
+    if (this.getAttribute('next-page')) {
+      navigationHandler.setCurrentPage(this.getAttribute('next-page'))
+    }
+    if (this.getAttribute('set-valid')) {
+      this.querySelectorAll('input[type="password"]').forEach(input => {
+        input.value = ''
+        input.placeholder = 'Password Changed'
+        input.classList.add('is-valid')
+      })
+    }
+  }.bind(this)
+  const err = function (data) {
+    this.querySelectorAll('input[type="password"]').forEach(input => {
+      input.value = ''
+      input.classList.add('is-invalid')
+    })
+  }.bind(this)
   formEvents[this.id] = new FormEvent({res, err})
 }
 $('form').each(initializeForm)
@@ -46,6 +66,9 @@ const submit = function (event) {
 const checkValidity = function (event) {
   // this = form
   // check if the form is valid HTML client side
+  this.querySelectorAll('input[type="password"]').forEach(input => {
+    input.classList.remove('is-invalid')
+  })
   if (this.checkValidity()) {
     // form is valid acording to client
 

@@ -26,13 +26,13 @@
         </div>
       </div>
       <div class="form-group">
-        <input name="credentials[password]" type="password" class="form-control password" placeholder="password"required>
+        <input name="credentials[password]" type="password" class="form-control" placeholder="password"required>
         <div class="invalid-feedback">
           Wrong Password
         </div>
       </div>
       <div class="form-group">
-        <input type="submit" value="Login" value disabled="true" class="btn btn-primary disabled">
+        <input type="submit" value="Login" value class="btn btn-primary">
       </div>
     </form>
   </section>
@@ -45,13 +45,13 @@
         <input name="credentials[email]" class="form-control" type="email" placeholder="first.last@gmail.com"required>
       </div>
       <div class="form-group">
-        <input name="credentials[password]" class="form-control password" type="password" placeholder="password"required>
+        <input name="credentials[password]" class="form-control" type="password" placeholder="password"required>
         <div class="invalid-feedback">
           Enter the same password
         </div>
       </div>
       <div class="form-group">
-        <input name="credentials[password_confirmation]" class="form-control password" type="password" placeholder="Re-Enter password"required>
+        <input name="credentials[password_confirmation]" class="form-control" type="password" placeholder="Re-Enter password"required>
       </div>
       <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary">
@@ -66,18 +66,15 @@
   <!-- CHANGE PASSWORD FORM -->
   <section id="change-password-page" class="page">
     <h1>Change Password</h1>
-    <form id="change-password"novalidate>
+    <form id="change-password" set-valid="true" novalidate>
       <div class="form-group">
-        <input name="passwords[old]" class="form-control password" type="password" placeholder="Old Password"required>
+        <input name="passwords[old]" class="form-control" type="password" placeholder="Old Password"required>
         <div class="invalid-feedback">
           Incorect Password, did not change account password
         </div>
       </div>
       <div class="form-group">
-        <input name="passwords[new]" class="form-control password" type="password" placeholder="New Password"required>
-      </div>
-      <div class="alert alert-success">
-        changed password
+        <input name="passwords[new]" class="form-control" type="password" placeholder="New Password"required>
       </div>
       <div class="form-group">
         <input type="submit" class="btn btn-primary" value="Change">
@@ -88,8 +85,8 @@
   <!-- LOGOUT FORM -->
   <section id="sign-out-page" class="page">
     <h1>Logout</h1>
-    <form id="logout">
-      <input type="submit" value="Logout">
+    <form id="sign-out" next-page="sign-in">
+      <input class="btn btn-primary" type="submit" value="Logout">
     </form>
   </section>
 
