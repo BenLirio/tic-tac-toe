@@ -1,59 +1,70 @@
-'use strict'
 
-const store = require('../store')
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
 const navigationHandler = require('../navigation/handler')
+// customError
+// patternMismatch
+// rangeOverflow
+// rangeUnderflow
+// stepMismatch
+// tooLong
+// typeMismatch
+// valueMissing
+// valid
 
-const Form = function (data) {
-  this.action = data.action
-  this.res = data.res || console.log
-  this.err = data.err || console.log
+
+
+
+
+const FormEvent = function (params) {
+  this.res = console.log
+  this.err = console.log
+  Object.assign(this, params)
+}
+const formEvents = {}
+// GO TO A PAGE function
+
+// Initialize the form events
+const initializeForm = function () {
+  const res = console.log
+  const err = console.error
+  formEvents[this.id] = new FormEvent({res, err})
+}
+$('form').each(initializeForm)
+
+const submit = function (event) {
+  event.preventDefault()
+  const form = event.target
+  const formData = getFormFields(form)
+  const id = form.id
+  api.ajax({id, formData})
+    .then(formEvents[form.id].res)
+    .catch(formEvents[form.id].err)
 }
 
-Form.prototype.submit = function (event) {
-  event.preventDefault()
-  event.stopPropagation()
-  console.log('VALID:', event.target.checkValidity())
-  if (event.target.checkValidity()) {
-    const form = event.target
-    const formData = getFormFields(form)
-    api.ajax({action: this.action, formData})
-      .then(this.res.bind(event.target))
-      .catch(this.err.bind(event.target))
+// Every time the form is changed
+const checkValidity = function (event) {
+  // this = form
+  // check if the form is valid HTML client side
+  if (this.checkValidity()) {
+    // form is valid acording to client
+
+    // set let the button be valid
+    const button = this.querySelector('.btn')
+    button.classList.remove('disabled')
+    button.removeAttribute('disabled')
   } else {
-    event.target.classList.add('is-invalid')
-    event.target.classList.add('was-validated')
+    // form is invalid acording to client
+
+    // set the button
+    const button = this.querySelector('.btn')
+    button.classList.add('disabled')
+    button.setAttribute('disabled', 'true')
   }
 }
 
-const forms = function () {
-}
 
-forms.addForm = function (data) {
-  this[data.name] = new Form(data)
+module.exports = {
+  checkValidity,
+  submit
 }
-
-const onSignIn = res => {
-  store.user = res.user
-  navigationHandler.setCurrentPage('menu')
-}
-const onSignOut = () => {
-  store.user = {}
-  console.log('SIGN OUT CLICKED')
-  navigationHandler.goBackPage()
-}
-const invalid = function (res) {
-  $('#' + this.id).find('.password').val('')
-  this.classList.add('is-invalid')
-  this.classList.add('was-validated')
-}
-
-forms.addForm({name: 'signIn', action: 'sign-in', res: onSignIn, err: invalid})
-forms.addForm({name: 'signUp', action: 'sign-up', err: invalid})
-forms.addForm({name: 'changePassword', action: 'change-password'})
-forms.addForm({name: 'signOut', action: 'sign-out', res: onSignOut})
-
-navigationHandler.setCurrentPage('sign-in')
-
-module.exports = forms

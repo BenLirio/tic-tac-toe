@@ -3,12 +3,16 @@
 const config = require('../config')
 const store = require('../store')
 
+// Convert Data to request
+
+// Request from the ajax server
+
 const ajax = (data) => {
-  const url = config.apiUrl + '/' + data.action
+  const url = config.apiUrl + '/' + data.id
   let method = ''
   let auth = false
   let headers = null
-  switch (data.action) {
+  switch (data.id) {
     case 'sign-up':
       method = 'POST'
       break
