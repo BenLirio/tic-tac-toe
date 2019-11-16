@@ -1,5 +1,7 @@
 'use strict'
 
+const ui = require('./ui')
+
 const Page = function (params = {}) {
   Object.assign(this, params)
 }
@@ -14,6 +16,7 @@ PageHandler.prototype.addPage = (...params) => {
   const name = page.getAttribute('name')
   const parent = page.getAttribute('parent')
   pageHandler.pages[name] = new Page({name, parent})
+  ui.show('page-one')
 }
 
 PageHandler.prototype.setActivePage = function (page) {
