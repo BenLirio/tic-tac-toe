@@ -18,12 +18,11 @@ PageHandler.prototype.addPage = (...params) => {
   pageHandler.pages[name] = new Page({name, parent})
 }
 
-PageHandler.prototype.setPage = function (page) {
-  console.log('trying to set page')
-  if (typeof page === 'object') {
-    ui.show(this.getAttribute('set-page'))
+PageHandler.prototype.setPage = function (e) {
+  if (typeof e === 'object') {
+    ui.show(e.getAttribute('set-page'))
   } else {
-    ui.show(page)
+    ui.show(e)
   }
 }
 

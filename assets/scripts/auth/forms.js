@@ -31,7 +31,7 @@ const initializeForm = function () {
 
   const res = function (data) {
     Object.assign(store, data)
-    if (this.getAttribute('next-page')) {
+    if (this.getAttribute('set-page')) {
       pages.setPage(this)
     }
     if (this.getAttribute('set-valid')) {
@@ -85,7 +85,6 @@ const checkValidity = function (event) {
     button.setAttribute('disabled', 'true')
   }
 }
-
 
 module.exports = {
   checkValidity,

@@ -14,21 +14,17 @@
 </head>
 
 <body>
-  <div name="page-one" class="page">
-    <h1>Page One</h1>
-    <button set-page="page-two">page-two</button>
-  </div>
-  <div name="page-two" class="page">
-    <h1>Page Two</h1>
-    <button set-page="page-one">page-one</button>
-  </div>
 
 
 
 
-  <!-- SIGN IN FORM -->
-  <section id="sign-in-page">
-    <h1>Login</h1>
+
+
+
+  <!-- SIGN-IN PAGE -->
+  <div name="sign-in" class="page">
+    <!-- SIGN IN FORM -->
+    <h1>Sign-in</h1>
     <form id="sign-in" set-page="menu" novalidate>
       <div class="form-group">
         <input name="credentials[email]" type="email" class="form-control" placeholder="Enter email" required>
@@ -46,12 +42,15 @@
         <input type="submit" value="Login" value class="btn btn-primary">
       </div>
     </form>
-  </section>
+    <!-- SIGN-UP FORM -->
+    <button set-page="sign-up">Sign-Up</button>
+  </div>
+  <!-- END SING-IN PAGE -->
 
-  <!-- SIGN UP FORM -->
-  <section id="sign-up-page">
+  <!-- SING-UP PAGE -->
+  <div name="sign-up" class="page">
     <h1>Sign Up</h1>
-    <form id="sign-up" novalidate>
+    <form id="sign-up" set-page="sign-in" novalidate>
       <div class="form-group">
         <input name="credentials[email]" class="form-control" type="email" placeholder="first.last@gmail.com" required>
       </div>
@@ -68,14 +67,21 @@
         <input type="submit" value="Create" class="btn btn-primary">
       </div>
     </form>
-  </section>
+    <button set-page="sign-in">Cancel</button>
+  </div>
 
-  <section id="menu-page">
-    <button id="play-game-button">Play game</button>
-  </section>
 
-  <!-- CHANGE PASSWORD FORM -->
-  <section id="change-password-page">
+
+
+
+
+
+
+  <!-- MENU PAGE -->
+  <div name="menu" class="page">
+    <h1>Menu</h1>
+    <button set-page="game">play</button>
+    <!-- CHANGE-PASSWORD FORM -->
     <h1>Change Password</h1>
     <form id="change-password" set-valid="true" novalidate>
       <div class="form-group">
@@ -91,19 +97,32 @@
         <input type="submit" class="btn btn-primary" value="Change">
       </div>
     </form>
-  </section>
-
-  <!-- LOGOUT FORM -->
-  <section id="sign-out-page">
+    <button set-page="stats">Stats</button>
+    <!-- LOGOUT FORM -->
     <h1>Logout</h1>
-    <form id="sign-out" next-page="sign-in">
+    <form id="sign-out" set-page="sign-in">
       <input class="btn btn-primary" type="submit" value="Logout">
     </form>
-  </section>
+  </div>
 
-  <!-- GAME BOARD -->
-  <section id="game-page">
-    <button class="back">back</button>
+
+  <div name="stats" class="page">
+    <h1>Win %</h1>
+    <h2>Comming soon</h2>
+    <button set-page="menu">back</button>
+  </div>
+
+
+
+
+
+
+
+
+
+  <div name="game" class="page">
+    <!-- GAME BOARD -->
+    <button set-page="menu">back</button>
     <h1>Game</h1>
     <h2 id="current-turn">Current Turn</h2>
     <h3 id="invalid-move">Invalid Move</h3>
@@ -119,8 +138,13 @@
     <button id="board-7">.</button>
     <button id="board-8">.</button>
     <h1 id="winner">Winner</h1>
-  </section>
+  </div>
+
+
+
+
+
+
 
 </body>
-
 </html>

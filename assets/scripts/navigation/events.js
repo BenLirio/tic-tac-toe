@@ -6,8 +6,8 @@ const pages = require('./pages')
 const addHandlers = function () {
   $('.back').on('click', () => handler.goBackPage())
   $('.page').each(pages.addPage)
-  $('button[set-page]').on('click', pages.setPage)
-  pages.setPage('page-one')
+  $('button[set-page]').on('click', event => pages.setPage(event.target))
+  pages.setPage('sign-in')
 }
 
 module.exports = {
