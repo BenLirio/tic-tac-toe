@@ -6,7 +6,7 @@ const pages = require('./pages')
 const addHandlers = function () {
   $('.back').on('click', () => handler.goBackPage())
   $('.page').each(pages.addPage)
-  $('button[set-page]').on('click', console.log)
+  $('button[set-page]').on('click', pages.setPage)
   pages.setPage('page-one')
 }
 

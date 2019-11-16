@@ -19,9 +19,11 @@ PageHandler.prototype.addPage = (...params) => {
 }
 
 PageHandler.prototype.setPage = function (page) {
-  // Hide all pages
-  ui.show(page)
-  // Set one page to active
+  if (typeof page === 'object') {
+    ui.show(this.getAttribute('set-page'))
+  } else {
+    ui.show(page)
+  }
 }
 
 
