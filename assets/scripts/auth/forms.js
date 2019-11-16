@@ -1,8 +1,8 @@
 
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
-const navigationHandler = require('../navigation/handler')
 const store = require('../store')
+const pages = require('../navigation/pages')
 // customError
 // patternMismatch
 // rangeOverflow
@@ -32,7 +32,7 @@ const initializeForm = function () {
   const res = function (data) {
     Object.assign(store, data)
     if (this.getAttribute('next-page')) {
-      navigationHandler.setCurrentPage(this.getAttribute('next-page'))
+      pages.setPage(this)
     }
     if (this.getAttribute('set-valid')) {
       this.querySelectorAll('input[type="password"]').forEach(input => {

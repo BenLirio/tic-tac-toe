@@ -19,12 +19,12 @@ PageHandler.prototype.addPage = (...params) => {
 }
 
 PageHandler.prototype.setPage = function (page) {
+  console.log('trying to set page')
   if (typeof page === 'object') {
     ui.show(this.getAttribute('set-page'))
   } else {
     ui.show(page)
   }
 }
-
 
 module.exports = pageHandler
