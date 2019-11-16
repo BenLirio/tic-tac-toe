@@ -16,12 +16,11 @@ PageHandler.prototype.addPage = (...params) => {
   const name = page.getAttribute('name')
   const parent = page.getAttribute('parent')
   pageHandler.pages[name] = new Page({name, parent})
-  ui.show('page-one')
 }
 
-PageHandler.prototype.setActivePage = function (page) {
+PageHandler.prototype.setPage = function (page) {
   // Hide all pages
-
+  ui.show(page)
   // Set one page to active
 }
 
