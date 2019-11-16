@@ -9,13 +9,18 @@ const PageHandler = function () {
 }
 const pageHandler = new PageHandler()
 
-PageHandler.prototype.addPage = function (...params) {
+PageHandler.prototype.addPage = (...params) => {
   const page = params[1]
   const name = page.getAttribute('name')
   const parent = page.getAttribute('parent')
-  this.pages[name] = new Page({name, parent})
-}.bind(pageHandler)
+  pageHandler.pages[name] = new Page({name, parent})
+}
 
+PageHandler.prototype.setActivePage = function (page) {
+  // Hide all pages
+
+  // Set one page to active
+}
 
 
 module.exports = pageHandler
