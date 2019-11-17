@@ -1,11 +1,13 @@
 'use strict'
-
-const authEvents = require('./auth/events')
-const gameEvents = require('./game/events')
-const navEvents = require('./nav/events')
+const eventHandlers = {
+  authEvents: require('./auth/events'),
+  gameEvents: require('./game/events'),
+  navEvents: require('./nav/events')
+}
 
 $(() => {
-  authEvents.init()
-  gameEvents.init()
-  navEvents.init()
+  for (const key in eventHandlers) {
+    const eventHandler = eventHandlers[key]
+    eventHandler.init()
+  }
 })

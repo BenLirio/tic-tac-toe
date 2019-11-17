@@ -5,12 +5,10 @@ const EventHandler = function () {
 }
 
 EventHandler.prototype.init = function () {
-  // Right after document loads
-  console.warn('REASIGN prototype.init', this)
-  this.addEventHandlers()
+  this.addEvents()
 }
 
-EventHandler.prototype.addEventHandlers = function () {
+EventHandler.prototype.addEvents = function () {
   console.warn('REASIGN prototype', this)
 }
 
