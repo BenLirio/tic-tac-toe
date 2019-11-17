@@ -7,7 +7,7 @@ const navEvents = require('./nav/events')
 $(() => {
   // First Java Script
   // Initialize all event handlers once document loads
-  authEvents.addHandlers()
-  gameEvents.addHandlers()
-  navEvents.addHandlers()
+  authEvents.init()
+  gameEvents.init()
+  navEvents.init()
 })
