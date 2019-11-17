@@ -1,11 +1,17 @@
 'use strict'
 
 const EventHandler = function () {
-  this.addHandlers()
+  // Javascript before document load
 }
 
-EventsHandler.prototype.addHandlers = function () {
-  console.log('adding handlers')
+EventHandler.prototype.init = function () {
+  // Right after document loads
+  console.warn('REASIGN prototype.init', this)
+  this.addEventHandlers()
 }
 
-module.exports = EventsHandler
+EventHandler.prototype.addEventHandlers = function () {
+  console.warn('REASIGN prototype', this)
+}
+
+module.exports = EventHandler

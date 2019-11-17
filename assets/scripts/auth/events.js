@@ -1,13 +1,7 @@
 'use strict'
 
-const init = () => {
-  addHandlers()
-}
+const EventHandler = require('../interface/EventHandler')
 
-const addHandlers = () => {
+const eventHandler = new EventHandler()
 
-}
-
-module.exports = {
-  init
-}
+module.exports = eventHandler
