@@ -9,7 +9,7 @@ EventHandler.prototype.init = function () {
 }
 
 EventHandler.prototype.addEvents = function () {
-  console.warn('REASIGN prototype', this)
+  console.debug('Please reasign addEvents:', this)
 }
 
 module.exports = EventHandler
