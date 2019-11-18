@@ -15,21 +15,41 @@
 
 <body>
 
-<!-- SIGN IN -->
+  <!-- SIGN IN -->
   <div id="sign-in" class="page first-page">
     <h1>Sign-in</h1>
+    <!-- SIGN-IN FORM -->
+    <form>
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="password">
+      </div>
+      <input type="submit" class="btn btn-success" value="sign in">
+    </form>
     <button data-set-page="sign-up" class="btn btn-link">create account</button>
     <button data-set-page="menu" class="btn btn-success">continue</button>
   </div>
   <!-- SIGN UP -->
   <div id="sign-up" class="page">
     <h1>Sign-up</h1>
+
+    <!-- SIGN UP FORM -->
+    <form>
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Enter new email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="password">
+        <input type="password" class="form-control" placeholder="password confirm">
+      </div>
+      <input type="submit" class="btn btn-success" value="create">
+    </form>
+
     <button data-set-page="sign-in" class="btn btn-secondary">back</button>
     <button data-set-page="sign-in" class="btn btn-success">create</button>
   </div>
-
-
-
 
 
   <!-- MENU -->
@@ -37,31 +57,40 @@
     <h1>Menu</h1>
     <button data-set-page="sign-in" class="btn btn-secondary">back</button>
     <button data-set-page="game" class="btn btn-success">create game</button>
-    <button data-set-page="stats" class="btn btn-info">stats</button>
+    <button data-set-page="account" class="btn btn-info">account</button>
   </div>
-  <div id="stats" class="page">
-    <h1>Stats</h1>
+    <!-- MENU>ACCOUNT -->
+    <div id="account" class="page">
+    <h1>Account</h1>
     <button data-set-page="menu" class="btn btn-secondary">back</button>
+    <button data-set-page="stats" class="btn btn-primary">stats</button>
+    <button data-set-page="change-password" class="btn btn-primary">change password</button>
+    <button data-set-page="sign-in" class="btn btn-danger">Sign Out</button>
   </div>
-
-
-
-
-
-
-
-  <!-- GAME -->
-  <div id="game" class="page">
+      <!-- MENU>ACCOUNT>STATS -->
+      <div id="stats" class="page">
+    <h1>Stats</h1>
+    <button data-set-page="account" class="btn btn-secondary">back</button>
+  </div>
+      <!-- MENU>ACCOUNT>CHANGE PASSWORD -->
+      <div id="change-password" class="page">
+    <h1>Change Password</h1>
+    <button data-set-page="account" class="btn btn-secondary">back</button>
+  </div>
+    <!-- MENU>GAME -->
+    <div id="game" class="page">
     <h1>Game</h1>
     <button data-set-page="menu" class="btn btn-secondary">back</button>
     <button data-set-page="win" class="btn btn-success">Win</button>
     <button data-set-page="loose" class="btn btn-danger">loose</button>
   </div>
-  <div id="win" class="page">
+      <!-- MENU>GAME>WIN -->
+      <div id="win" class="page">
     <h1>Win</h1>
     <button data-set-page="game" class="btn btn-secondary">back</button>
   </div>
-  <div id="loose" class="page">
+      <!-- MENU>GAME>LOOSE -->
+      <div id="loose" class="page">
     <h1>Loose</h1>
     <button data-set-page="game" class="btn btn-secondary">back</button>
   </div>
@@ -76,13 +105,13 @@
     <h1>Login</h1>
     <form id="sign-in" next-page="menu" novalidate>
       <div class="form-group">
-        <input name="credentials[email]" type="email" class="form-control" placeholder="Enter email"required>
+        <input name="credentials[email]" type="email" class="form-control" placeholder="Enter email" required>
         <div class="invalid-feedback">
           Please enter email
         </div>
       </div>
       <div class="form-group">
-        <input name="credentials[password]" type="password" class="form-control" placeholder="password"required>
+        <input name="credentials[password]" type="password" class="form-control" placeholder="password" required>
         <div class="invalid-feedback">
           Wrong Password
         </div>
@@ -98,16 +127,16 @@
     <h1>Sign Up</h1>
     <form id="sign-up" novalidate>
       <div class="form-group">
-        <input name="credentials[email]" class="form-control" type="email" placeholder="first.last@gmail.com"required>
+        <input name="credentials[email]" class="form-control" type="email" placeholder="first.last@gmail.com" required>
       </div>
       <div class="form-group">
-        <input name="credentials[password]" class="form-control" type="password" placeholder="password"required>
+        <input name="credentials[password]" class="form-control" type="password" placeholder="password" required>
         <div class="invalid-feedback">
           Enter the same password
         </div>
       </div>
       <div class="form-group">
-        <input name="credentials[password_confirmation]" class="form-control" type="password" placeholder="Re-Enter password"required>
+        <input name="credentials[password_confirmation]" class="form-control" type="password" placeholder="Re-Enter password" required>
       </div>
       <div class="form-group">
         <input type="submit" value="Create" class="btn btn-primary">
@@ -124,13 +153,13 @@
     <h1>Change Password</h1>
     <form id="change-password" set-valid="true" novalidate>
       <div class="form-group">
-        <input name="passwords[old]" class="form-control" type="password" placeholder="Old Password"required>
+        <input name="passwords[old]" class="form-control" type="password" placeholder="Old Password" required>
         <div class="invalid-feedback">
           Incorect Password, did not change account password
         </div>
       </div>
       <div class="form-group">
-        <input name="passwords[new]" class="form-control" type="password" placeholder="New Password"required>
+        <input name="passwords[new]" class="form-control" type="password" placeholder="New Password" required>
       </div>
       <div class="form-group">
         <input type="submit" class="btn btn-primary" value="Change">
