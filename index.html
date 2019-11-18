@@ -14,11 +14,62 @@
 </head>
 
 <body>
-  <button data-set-page="page-one">setPage</button>
 
-  <div id="page-one" class="page">
-    <h1>Page One</h1>
+<!-- SIGN IN -->
+  <div id="sign-in" class="page first-page">
+    <h1>Sign-in</h1>
+    <button data-set-page="sign-up" class="btn btn-link">create account</button>
+    <button data-set-page="menu" class="btn btn-success">continue</button>
   </div>
+  <!-- SIGN UP -->
+  <div id="sign-up" class="page">
+    <h1>Sign-up</h1>
+    <button data-set-page="sign-in" class="btn btn-secondary">back</button>
+    <button data-set-page="sign-in" class="btn btn-success">create</button>
+  </div>
+
+
+
+
+
+  <!-- MENU -->
+  <div id="menu" class="page">
+    <h1>Menu</h1>
+    <button data-set-page="sign-in" class="btn btn-secondary">back</button>
+    <button data-set-page="game" class="btn btn-success">create game</button>
+    <button data-set-page="stats" class="btn btn-info">stats</button>
+  </div>
+  <div id="stats" class="page">
+    <h1>Stats</h1>
+    <button data-set-page="menu" class="btn btn-secondary">back</button>
+  </div>
+
+
+
+
+
+
+
+  <!-- GAME -->
+  <div id="game" class="page">
+    <h1>Game</h1>
+    <button data-set-page="menu" class="btn btn-secondary">back</button>
+    <button data-set-page="win" class="btn btn-success">Win</button>
+    <button data-set-page="loose" class="btn btn-danger">loose</button>
+  </div>
+  <div id="win" class="page">
+    <h1>Win</h1>
+    <button data-set-page="game" class="btn btn-secondary">back</button>
+  </div>
+  <div id="loose" class="page">
+    <h1>Loose</h1>
+    <button data-set-page="game" class="btn btn-secondary">back</button>
+  </div>
+
+
+
+
+
 
   <!-- SIGN IN FORM -->
   <section id="sign-in-page" class="page">
