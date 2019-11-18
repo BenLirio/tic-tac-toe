@@ -4,8 +4,12 @@ const EventHandler = require('../interface/EventHandler')
 
 const eventHandler = new EventHandler()
 
+eventHandler.onSubmitForm = event => {
+  event.preventDefault()
+}
+
 eventHandler.addEvents = function () {
-  $('form').on('submit', )
+  $('form').on('submit', eventHandler.onSubmitForm)
 }
 
 
