@@ -12,6 +12,8 @@ eventHandler.onSubmitForm = event => {
   const action = form.dataset.ajaxAction
   const data = getFormFields(form)
   api.auth(action, data)
+    .then(console.log)
+    .catch(console.error)
 }
 
 eventHandler.addEvents = function () {
