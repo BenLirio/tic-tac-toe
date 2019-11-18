@@ -26,7 +26,7 @@
       <div class="form-group">
         <input type="password" class="form-control" placeholder="password">
       </div>
-      <input type="submit" class="btn btn-success" value="sign in">
+      <button type="submit" class="btn btn-success">sign in</button>
     </form>
     <button data-set-page="sign-up" class="btn btn-link">create account</button>
     <button data-set-page="menu" class="btn btn-success">continue</button>
@@ -44,7 +44,7 @@
         <input type="password" class="form-control" placeholder="password">
         <input type="password" class="form-control" placeholder="password confirm">
       </div>
-      <input type="submit" class="btn btn-success" value="create">
+      <button type="submit" class="btn btn-success">create</button>
     </form>
 
     <button data-set-page="sign-in" class="btn btn-secondary">back</button>
@@ -57,38 +57,47 @@
     <button data-set-page="game" class="btn btn-success">create game</button>
     <button data-set-page="account" class="btn btn-info">account</button>
   </div>
-    <!-- MENU>ACCOUNT -->
-    <div id="account" class="page">
+  <!-- MENU>ACCOUNT -->
+  <div id="account" class="page">
     <h1>Account</h1>
     <button data-set-page="menu" class="btn btn-secondary">back</button>
     <button data-set-page="stats" class="btn btn-primary">stats</button>
     <button data-set-page="change-password" class="btn btn-primary">change password</button>
     <button data-set-page="sign-in" class="btn btn-danger">Sign Out</button>
   </div>
-      <!-- MENU>ACCOUNT>STATS -->
-      <div id="stats" class="page">
+  <!-- MENU>ACCOUNT>STATS -->
+  <div id="stats" class="page">
     <h1>Stats</h1>
     <button data-set-page="account" class="btn btn-secondary">back</button>
   </div>
-      <!-- MENU>ACCOUNT>CHANGE PASSWORD -->
-      <div id="change-password" class="page">
+  <!-- MENU>ACCOUNT>CHANGE PASSWORD -->
+  <div id="change-password" class="page">
     <h1>Change Password</h1>
+    <form>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="old password">
+        <input type="password" class="form-control" placeholder="new password">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">change</button>
+      </div>
+    </form>
     <button data-set-page="account" class="btn btn-secondary">back</button>
   </div>
-    <!-- MENU>GAME -->
-    <div id="game" class="page">
+  <!-- MENU>GAME -->
+  <div id="game" class="page">
     <h1>Game</h1>
     <button data-set-page="menu" class="btn btn-secondary">back</button>
     <button data-set-page="win" class="btn btn-success">Win</button>
     <button data-set-page="loose" class="btn btn-danger">loose</button>
   </div>
-      <!-- MENU>GAME>WIN -->
-      <div id="win" class="page">
+  <!-- MENU>GAME>WIN -->
+  <div id="win" class="page">
     <h1>Win</h1>
     <button data-set-page="game" class="btn btn-secondary">back</button>
   </div>
-      <!-- MENU>GAME>LOOSE -->
-      <div id="loose" class="page">
+  <!-- MENU>GAME>LOOSE -->
+  <div id="loose" class="page">
     <h1>Loose</h1>
     <button data-set-page="game" class="btn btn-secondary">back</button>
   </div>
