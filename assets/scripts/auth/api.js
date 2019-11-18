@@ -4,6 +4,12 @@ const Api = require('../interface/Api')
 
 const api = new Api()
 
+/**
+ * Convert Data from user action into ajax format
+ * @param  {String} action name of the API action
+ * @param  {Object} data   Form Data from user
+ * @return {Promise}        Promise the gives the user an auth key if credentails are correct
+ */
 api.auth = function (action, data) {
   const ajaxArgs = {}
   ajaxArgs.url = action

@@ -8,18 +8,28 @@ const ui = require('./ui')
 
 const eventHandler = new EventHandler()
 
+/**
+ * Triggers when the user gets an auth response from server
+ * @param  {Object} res Res object with User object inside with email and Token
+ */
 eventHandler.formSuccess = function (res) {
   Object.assign(store, res)
   const pageId = this.dataset.setPage
   ui.showPageById(pageId)
 }
 
+/**
+ * Triggers when the users credentails are rejected by server
+ * @param  {object} err err object with the type of error
+ */
 eventHandler.formFailure = function (err) {
   console.error(err)
 }
 
-
-
+/**
+ * Triggers when the user submits any formFailure
+ * @param  {object} event Event object with target element inside
+ */
 eventHandler.onSubmitForm = event => {
   event.preventDefault()
   const form = event.target
@@ -30,16 +40,11 @@ eventHandler.onSubmitForm = event => {
     .catch(eventHandler.formFailure.bind(form))
 }
 
+/**
+ * Initializes all of the events for auth
+ */
 eventHandler.addEvents = function () {
   $('form').on('submit', eventHandler.onSubmitForm)
 }
 
-// Event handler should convert the data to what the api wants
-// It needs a name and it needs a data
-
-// Initialize the button listeners for all forms
-// Get form Data and send to api for all the form
-// In the api wirte one large switch case statement for all of the possibilities
-// Create a auth that can be also used for game auth
-// Any file can accept any information but slim it down to what each file needs
 module.exports = eventHandler
