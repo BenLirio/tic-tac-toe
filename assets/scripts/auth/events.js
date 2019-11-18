@@ -3,8 +3,22 @@
 const EventHandler = require('../interface/EventHandler')
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
+const store = require('../store')
+const ui = require('./ui')
 
 const eventHandler = new EventHandler()
+
+eventHandler.formSuccess = function (res) {
+  Object.assign(store, res)
+  const pageId = this.dataset.setPage
+  ui.showPageById(pageId)
+}
+
+eventHandler.formFailure = function (err) {
+  console.error(err)
+}
+
+
 
 eventHandler.onSubmitForm = event => {
   event.preventDefault()
@@ -12,8 +26,8 @@ eventHandler.onSubmitForm = event => {
   const action = form.dataset.ajaxAction
   const data = getFormFields(form)
   api.auth(action, data)
-    .then(console.log)
-    .catch(console.error)
+    .then(eventHandler.formSuccess.bind(form))
+    .catch(eventHandler.formFailure.bind(form))
 }
 
 eventHandler.addEvents = function () {

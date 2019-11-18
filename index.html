@@ -19,7 +19,7 @@
   <div id="sign-in" class="page first-page">
     <h1>Sign-in</h1>
     <!-- SIGN-IN FORM -->
-    <form data-ajax-action="sign-in">
+    <form data-ajax-action="sign-in" data-set-page="menu">
       <div class="form-group">
         <input type="email" class="form-control" placeholder="Enter email" name="credentials[email]">
       </div>
@@ -36,7 +36,7 @@
     <h1>Sign-up</h1>
 
     <!-- SIGN UP FORM -->
-    <form data-ajax-action="sign-up">
+    <form data-ajax-action="sign-up" data-set-page="sign-in">
       <div class="form-group">
         <input type="email" class="form-control" placeholder="Enter new email" name="credentials[email]">
       </div>
@@ -64,7 +64,7 @@
     <button data-set-page="stats" class="btn btn-primary">stats</button>
     <button data-set-page="change-password" class="btn btn-primary">change password</button>
     <button data-set-page="sign-in" class="btn btn-danger">Sign Out</button>
-    <form data-ajax-action="sign-out">
+    <form data-ajax-action="sign-out" data-set-page="sign-in">
       <div class="form-group">
         <button type="submit" class="btn btn-danger">Sign Out AUTH</button>
       </div>
@@ -78,10 +78,10 @@
   <!-- MENU>ACCOUNT>CHANGE PASSWORD -->
   <div id="change-password" class="page">
     <h1>Change Password</h1>
-    <form data-ajax-action="change-password">
+    <form data-ajax-action="change-password" data-set-page="menu">
       <div class="form-group">
-        <input type="password" class="form-control" placeholder="old password" name="password[old]">
-        <input type="password" class="form-control" placeholder="new password" name="password[new]">
+        <input type="password" class="form-control" placeholder="old password" name="passwords[old]">
+        <input type="password" class="form-control" placeholder="new password" name="passwords[new]">
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-success">change</button>

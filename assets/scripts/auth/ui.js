@@ -2,6 +2,6 @@
 
 const Ui = require('../interface/Ui')
 
-module.exports = {
+const ui = new Ui()
 
-}
+module.exports = ui
