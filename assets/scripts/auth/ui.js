@@ -1,6 +1,6 @@
 'use strict'
 
-const inter = require('../inter/ui')
+const Ui = require('../interface/Ui')
 
 module.exports = {
 
