@@ -18,7 +18,9 @@ eventHandler.showPageByEvent = event => {
  * Initializes all of the events for navigation
  */
 eventHandler.addEvents = function () {
-  ui.showPageById($('.page.first-page')[0].id)
+  console.warn('starting on game page')
+  ui.showPageById('game')
+  // ui.showPageById($('.page.first-page')[0].id)
   $('button[data-set-page]').on('click', eventHandler.showPageByEvent)
 }
 

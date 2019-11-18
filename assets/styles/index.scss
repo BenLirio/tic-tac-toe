@@ -1,7 +1,28 @@
 @import '~bootstrap/scss/bootstrap';
 
-button {
-  margin: 10px;
-  padding: 40px;
-  font-size: 40px;
+.board {
+  height: 300px;
+  max-width: 300px;
+}
+
+.cell {
+  border: 2px solid black;
+  height: 100px;
+}
+
+.cell:nth-child(3n) {
+  border-right: 0;
+}
+
+.cell:nth-child(1n) {
+  border-left: 0;
+}
+.cell-row:nth-child(1n) > .cell {
+  border-top: 0;
+}
+.cell-row:nth-child(3n) > .cell {
+  border-bottom: 0;
+}
+.redc {
+  background: red;
 }
