@@ -8,4 +8,7 @@ eventHandler.addEvents = function () {
 
 }
 
+
+// Initialize the button listeners for all forms
+
 module.exports = eventHandler
