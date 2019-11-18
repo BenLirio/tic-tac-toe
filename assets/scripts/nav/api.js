@@ -1,6 +1,8 @@
 'use strict'
 
-const inter = require('../inter/api')
+const Api = require('../interface/Api')
+
+const api = new Api()
 
 module.exports = {
 
