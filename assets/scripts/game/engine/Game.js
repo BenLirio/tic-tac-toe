@@ -12,10 +12,11 @@ const Game = function () {
   this._board = new Board()
 }
 
-Game.prototype.setGame = function (id, playerX, playerO) {
+Game.prototype.create = function (id, playerX, playerO) {
   this._id = id
   this._player_x = playerX
   this._player_o = playerO
+  console.log(this)
 }
 
 Game.prototype.click = function (event) {

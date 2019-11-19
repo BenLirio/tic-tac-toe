@@ -7,6 +7,11 @@ const Api = function () {
 }
 
 Api.prototype.ajax = function (params) {
+  // url
+  // method
+  // data
+  // headers
+  // auth
   const requestMeta = {}
   requestMeta.url = config.apiUrl + '/' + params.url
   requestMeta.method = params.method
