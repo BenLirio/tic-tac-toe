@@ -1,38 +1,27 @@
 'use strict'
 
 const Cell = function () {
-  this._value = 0
+  this._value = ''
 }
+
+Cell.prototype.isSet = function () {
+  return this._value !== ''
+}
+
+Cell.prototype.setX = function () {
+  this._value = 'x'
+}
+
+Cell.prototype.setO = function () {
+  this._value = 'o'
+}
+
 Cell.prototype.reset = function () {
-  this._vlaue = 0
+  this._value = ''
 }
-Cell.prototype.setValue = function (value) {
-  if (value) {
-    this._value = 1
-  } else {
-    this._value = -1
-  }
-}
-Cell.prototype.hasBeenSet = function () {
-  return this._value === 0
-}
-Cell.prototype.getSymbol = function () {
-  let cellSymbol = ''
-  switch (this._value) {
-    case 1:
-      cellSymbol = 'x'
-      break
-    case 2:
-      cellSymbol = 'y'
-      break
-    case 3:
-      cellSymbol = ''
-      break
-    default:
-      console.warn('Invalid cell value')
-      break
-  }
-  return cellSymbol
+
+Cell.prototype.getValue = function () {
+  return this._value
 }
 
 module.exports = Cell
