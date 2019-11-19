@@ -29,7 +29,6 @@
       <button type="submit" class="btn btn-success">sign in</button>
     </form>
     <button data-set-page="sign-up" class="btn btn-link">create account</button>
-    <button data-set-page="menu" class="btn btn-success">continue</button>
   </div>
   <!-- SIGN UP -->
   <div id="sign-up" class="page">
@@ -48,7 +47,6 @@
     </form>
 
     <button data-set-page="sign-in" class="btn btn-secondary">back</button>
-    <button data-set-page="sign-in" class="btn btn-success">create</button>
   </div>
   <!-- MENU -->
   <div id="menu" class="page">
@@ -63,7 +61,6 @@
     <button data-set-page="menu" class="btn btn-secondary">back</button>
     <button data-set-page="stats" class="btn btn-primary">stats</button>
     <button data-set-page="change-password" class="btn btn-primary">change password</button>
-    <button data-set-page="sign-in" class="btn btn-danger">Sign Out</button>
     <form data-ajax-action="sign-out" data-set-page="sign-in">
       <div class="form-group">
         <button type="submit" class="btn btn-danger">Sign Out AUTH</button>
@@ -88,10 +85,10 @@
         <button type="submit" class="btn btn-success">change</button>
       </div>
     </form>
-    <button data-set-page="account" class="btn btn-secondary">back</button>
   </div>
   <!-- MENU>GAME -->
   <div id="game" class="page">
+    <button data-set-page="menu" class="btn btn-secondary">cancel game</button>
     <h1>Game</h1>
     <h1 class="current-turn">Current turn: x</h1>
     <div class="board container">
@@ -112,9 +109,6 @@
       </div>
     </div>
     <h1 class="invalid-move">SPOT TAKEN</h1>
-    <button data-set-page="menu" class="btn btn-secondary">back</button>
-    <button data-set-page="win" class="btn btn-success">Win</button>
-    <button data-set-page="loose" class="btn btn-danger">loose</button>
   </div>
   <!-- MENU>GAME>WIN -->
   <div id="win" class="page">
