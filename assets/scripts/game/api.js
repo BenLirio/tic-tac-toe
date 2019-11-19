@@ -13,4 +13,22 @@ api.createGame = function () {
   })
 }
 
+api.updateGame = function (i, turn, overInput, id) {
+  const sym = turn ? 'x' : 'o'
+  return api.ajax({
+    method: 'PATCH',
+    url: ('games/' + id),
+    data: {
+      game: {
+        cell: {
+          index: i,
+          value: sym
+        },
+        over: overInput
+      }
+    },
+    auth: true
+  })
+}
+
 module.exports = api

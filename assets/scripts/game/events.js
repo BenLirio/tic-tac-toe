@@ -19,6 +19,7 @@ eventHandler.createGame = function (event) {
 eventHandler.addEvents = function () {
   $('.cell').on('click', e => game.click(e))
   $('button[data-set-page="game"]').on('click', event => eventHandler.createGame(event))
+  $('button[data-set-page="stats"]').on('click')
 }
 
 module.exports = eventHandler

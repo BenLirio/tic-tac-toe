@@ -31,4 +31,14 @@ ui.displayCellByIndex = function (v, i) {
   }
 }
 
+ui.resetBoard = function () {
+  for (let i = 0; i < 9; i++) {
+    const text = '#cell-' + i
+    const classList = $(text)[0].classList
+    classList.remove('x-style')
+    classList.remove('o-style')
+    classList.add('unset-style')
+  }
+}
+
 module.exports = ui

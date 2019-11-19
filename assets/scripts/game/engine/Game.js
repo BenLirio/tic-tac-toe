@@ -2,6 +2,7 @@
 
 const Board = require('./Board')
 const ui = require('../ui')
+const api = require('../api')
 
 const Game = function () {
   this._id = null
@@ -16,6 +17,10 @@ Game.prototype.create = function (id, playerX, playerO) {
   this._id = id
   this._player_x = playerX
   this._player_o = playerO
+  this._over = false
+  this._turn = true
+  this._board = new Board()
+  ui.resetBoard()
   console.log(this)
 }
 
@@ -28,8 +33,15 @@ Game.prototype.click = function (event) {
     } else if (this.isTie()) {
       console.log('is tie')
     }
-    this.changeTurn()
   }
+  api.updateGame(i, this._turn, this._over, this._id)
+    .then((res) => {
+      if (this._over) {
+        ui.showPageById(this._turn ? 'win' : 'loose')
+      }
+      this.changeTurn()
+    })
+    .catch(console.error)
 }
 
 Game.prototype.changeTurn = function () {
