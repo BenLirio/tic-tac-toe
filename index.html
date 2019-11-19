@@ -14,6 +14,128 @@
 </head>
 
 <body>
+  <div class="auth-alert alert alert-success">success</div>
+  <!-- SIGN IN -->
+  <div id="sign-in" class="page first-page">
+    <h1>Sign-in</h1>
+    <!-- SIGN-IN FORM -->
+    <form data-ajax-action="sign-in" data-set-page="menu">
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Enter email" name="credentials[email]">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="password" name="credentials[password]">
+      </div>
+      <button type="submit" class="btn btn-success">sign in</button>
+    </form>
+    <button data-set-page="sign-up" class="btn btn-link">create account</button>
+    <button data-set-page="menu" class="btn btn-success">continue</button>
+  </div>
+  <!-- SIGN UP -->
+  <div id="sign-up" class="page">
+    <h1>Sign-up</h1>
+
+    <!-- SIGN UP FORM -->
+    <form data-ajax-action="sign-up" data-set-page="sign-in">
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Enter new email" name="credentials[email]">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="password" name="credentials[password]">
+        <input type="password" class="form-control" placeholder="confirm password" name="credentials[password_confirmation]">
+      </div>
+      <button type="submit" class="btn btn-success">create</button>
+    </form>
+
+    <button data-set-page="sign-in" class="btn btn-secondary">back</button>
+    <button data-set-page="sign-in" class="btn btn-success">create</button>
+  </div>
+  <!-- MENU -->
+  <div id="menu" class="page">
+    <h1>Menu</h1>
+    <button data-set-page="sign-in" class="btn btn-secondary">back</button>
+    <button data-set-page="game" class="btn btn-success">create game</button>
+    <button data-set-page="account" class="btn btn-info">account</button>
+  </div>
+  <!-- MENU>ACCOUNT -->
+  <div id="account" class="page">
+    <h1>Account</h1>
+    <button data-set-page="menu" class="btn btn-secondary">back</button>
+    <button data-set-page="stats" class="btn btn-primary">stats</button>
+    <button data-set-page="change-password" class="btn btn-primary">change password</button>
+    <button data-set-page="sign-in" class="btn btn-danger">Sign Out</button>
+    <form data-ajax-action="sign-out" data-set-page="sign-in">
+      <div class="form-group">
+        <button type="submit" class="btn btn-danger">Sign Out AUTH</button>
+      </div>
+    </form>
+  </div>
+  <!-- MENU>ACCOUNT>STATS -->
+  <div id="stats" class="page">
+    <h1>Stats</h1>
+    <h1 class="total-games">0</h1>
+    <button data-set-page="account" class="btn btn-secondary">back</button>
+  </div>
+  <!-- MENU>ACCOUNT>CHANGE PASSWORD -->
+  <div id="change-password" class="page">
+    <h1>Change Password</h1>
+    <form data-ajax-action="change-password" data-set-page="menu">
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="old password" name="passwords[old]">
+        <input type="password" class="form-control" placeholder="new password" name="passwords[new]">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">change</button>
+      </div>
+    </form>
+    <button data-set-page="account" class="btn btn-secondary">back</button>
+  </div>
+  <!-- MENU>GAME -->
+  <div id="game" class="page">
+    <h1>Game</h1>
+    <h1 class="current-turn">Current turn: x</h1>
+    <div class="board container">
+      <div class="cell-row row">
+        <div id="cell-0" class="col cell"></div>
+        <div id="cell-1" class="col cell"></div>
+        <div id="cell-2" class="col cell"></div>
+      </div>
+      <div class="cell-row row">
+        <div id="cell-3" class="col cell"></div>
+        <div id="cell-4" class="col cell"></div>
+        <div id="cell-5" class="col cell"></div>
+      </div>
+      <div class="cell-row row">
+        <div id="cell-6" class="col cell"></div>
+        <div id="cell-7" class="col cell"></div>
+        <div id="cell-8" class="col cell"></div>
+      </div>
+    </div>
+    <h1 class="invalid-move">SPOT TAKEN</h1>
+    <button data-set-page="menu" class="btn btn-secondary">back</button>
+    <button data-set-page="win" class="btn btn-success">Win</button>
+    <button data-set-page="loose" class="btn btn-danger">loose</button>
+  </div>
+  <!-- MENU>GAME>WIN -->
+  <div id="win" class="page">
+    <h1>Win</h1>
+    <button data-set-page="game" class="btn btn-secondary">back</button>
+  </div>
+  <!-- MENU>GAME>LOOSE -->
+  <div id="loose" class="page">
+    <h1>Loose</h1>
+    <button data-set-page="game" class="btn btn-secondary">back</button>
+  </div>
+  <!-- MENU>GAME>TIE -->
+  <div id="tie" class="page">
+    <h1>Tie</h1>
+    <button data-set-page="game" class="btn btn-secondary">back</button>
+  </div>
+
+
+
+
+
 
 
 

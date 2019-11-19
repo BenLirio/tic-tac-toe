@@ -1,12 +1,13 @@
 'use strict'
-// Require Authorization Events
-const authEvents = require('./auth/events')
-const boardEvents = require('./board/events')
-const navigationEvents = require('./navigation/events')
+const eventHandlers = {
+  authEvents: require('./auth/events'),
+  gameEvents: require('./game/events'),
+  navEvents: require('./nav/events')
+}
 
 $(() => {
-  /* Add Authorization Events */
-  authEvents.addHandlers()
-  boardEvents.addHandlers()
-  navigationEvents.addHandlers()
+  for (const key in eventHandlers) {
+    const eventHandler = eventHandlers[key]
+    eventHandler.init()
+  }
 })

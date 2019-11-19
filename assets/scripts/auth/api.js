@@ -1,41 +1,42 @@
 'use strict'
 
-const config = require('../config')
-const store = require('../store')
+const Api = require('../interface/Api')
 
-// Convert Data to request
+const api = new Api()
 
-// Request from the ajax server
+/**
+ * Convert Data from user action into ajax format
+ * @param  {String} action name of the API action
+ * @param  {Object} data   Form Data from user
+ * @return {Promise}        Promise the gives the user an auth key if credentails are correct
+ */
+api.auth = function (action, data) {
+  const ajaxArgs = {}
+  ajaxArgs.url = action
+  ajaxArgs.data = data
 
-const ajax = (data) => {
-  const url = config.apiUrl + '/' + data.id
-  let method = ''
-  let auth = false
-  let headers = null
-  switch (data.id) {
-    case 'sign-up':
-      method = 'POST'
-      break
+  switch (action) {
     case 'sign-in':
-      method = 'POST'
+      ajaxArgs.method = 'POST'
+      ajaxArgs.auth = false
+      break
+    case 'sign-up':
+      ajaxArgs.method = 'POST'
+      ajaxArgs.auth = false
       break
     case 'change-password':
-      method = 'PATCH'
-      auth = true
+      ajaxArgs.method = 'PATCH'
+      ajaxArgs.auth = true
       break
     case 'sign-out':
-      method = 'DELETE'
-      auth = true
+      ajaxArgs.method = 'DELETE'
+      ajaxArgs.auth = true
+      break
+    default:
+      console.warn('Please Enter an action for this request')
       break
   }
-  if (auth) {
-    headers = {
-      Authorization: `Token token=${store.user.token}`
-    }
-  }
-  return $.ajax({url, method, headers, data: data.formData})
+  return this.ajax(ajaxArgs)
 }
 
-module.exports = {
-  ajax
-}
+module.exports = api
