@@ -18,7 +18,8 @@ eventHandler.showPageByEvent = event => {
  * Initializes all of the events for navigation
  */
 eventHandler.addEvents = function () {
-  ui.showPageById($('.page.first-page')[0].id)
+  ui.showPageById('sign-in')
+  // ui.showPageById($('.page.first-page')[0].id)
   $('button[data-set-page]').on('click', eventHandler.showPageByEvent)
 }
 
