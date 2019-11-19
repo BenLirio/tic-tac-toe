@@ -8,7 +8,6 @@ const game = new Game()
 const eventHandler = new EventHandler()
 
 eventHandler.createGame = function (event) {
-  console.log(event)
   console.log(api)
   api.createGame()
     .then((res) => {

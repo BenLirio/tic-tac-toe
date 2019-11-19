@@ -11,6 +11,7 @@ const Game = function () {
   this._over = false
   this._turn = true
   this._board = new Board()
+  this._isTie = false
 }
 
 Game.prototype.create = function (id, playerX, playerO) {
@@ -20,8 +21,8 @@ Game.prototype.create = function (id, playerX, playerO) {
   this._over = false
   this._turn = true
   this._board = new Board()
+  this._isTie = false
   ui.resetBoard()
-  console.log(this)
 }
 
 Game.prototype.click = function (event) {
@@ -32,11 +33,14 @@ Game.prototype.click = function (event) {
     if (this.checkWin()) {
       this._over = true
     } else if (this.isTie()) {
-      console.log('is tie')
+      this._over = true
+      this._isTie = true
     }
     api.updateGame(i, this._turn, this._over, this._id)
       .then((res) => {
-        if (this._over) {
+        if (this._isTie) {
+          ui.showPageById('tie')
+        } else if (this._over) {
           ui.showPageById(this._turn ? 'win' : 'loose')
         } else {
           this.changeTurn()
