@@ -41,4 +41,8 @@ ui.resetBoard = function () {
   }
 }
 
+ui.stats = function (games) {
+  $('.total-games').text(games)
+}
+
 module.exports = ui

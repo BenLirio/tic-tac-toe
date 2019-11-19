@@ -31,4 +31,12 @@ api.updateGame = function (i, turn, overInput, id) {
   })
 }
 
+api.getStats = function () {
+  return api.ajax({
+    method: 'GET',
+    url: ('games?over=true'),
+    auth: true
+  })
+}
+
 module.exports = api
