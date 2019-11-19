@@ -25,6 +25,7 @@ Game.prototype.create = function (id, playerX, playerO) {
 }
 
 Game.prototype.click = function (event) {
+  ui.cancelInvalid()
   const i = getIndexFromEvent(event)
   if (this._board.cellOpen(i)) {
     this.setCell(i)
@@ -33,15 +34,19 @@ Game.prototype.click = function (event) {
     } else if (this.isTie()) {
       console.log('is tie')
     }
+    api.updateGame(i, this._turn, this._over, this._id)
+      .then((res) => {
+        if (this._over) {
+          ui.showPageById(this._turn ? 'win' : 'loose')
+        } else {
+          this.changeTurn()
+          ui.setTurn(this._turn)
+        }
+      })
+      .catch(console.error)
+  } else {
+    ui.showInvalid()
   }
-  api.updateGame(i, this._turn, this._over, this._id)
-    .then((res) => {
-      if (this._over) {
-        ui.showPageById(this._turn ? 'win' : 'loose')
-      }
-      this.changeTurn()
-    })
-    .catch(console.error)
 }
 
 Game.prototype.changeTurn = function () {
@@ -66,10 +71,10 @@ Game.prototype.isTie = function () {
 Game.prototype.checkWin = function () {
   const cells = this._board.getPlayerCells(this._turn)
   const tests = [
-    /x.-.-.x.-.-.x/,
+    /x.....x.....x/,
     /x.x.x[258]/,
-    /x.-.x4-.x/,
-    /x.-.-.-.x4-.-.-.x/
+    /x...x4..x/,
+    /x.......x4......x/
   ]
   return tests.some(regex => regex.test(cells))
 }

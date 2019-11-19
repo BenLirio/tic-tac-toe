@@ -45,4 +45,17 @@ ui.stats = function (games) {
   $('.total-games').text(games)
 }
 
+ui.setTurn = function (turn) {
+  $('.current-turn').text('Current turn: ' + (turn ? 'x' : 'o'))
+}
+
+$('.invalid-move').hide()
+
+ui.showInvalid = function () {
+  $('.invalid-move').show()
+}
+ui.cancelInvalid = function () {
+  $('.invalid-move').hide()
+}
+
 module.exports = ui

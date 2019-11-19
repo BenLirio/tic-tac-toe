@@ -13,6 +13,9 @@ const eventHandler = new EventHandler()
  * @param  {Object} res Res object with User object inside with email and Token
  */
 eventHandler.formSuccess = function (res) {
+  this.querySelectorAll('input').forEach(input => {
+    input.classList.remove('is-invalid')
+  })
   Object.assign(store, res)
   const pageId = this.dataset.setPage
   ui.showPageById(pageId)
@@ -23,7 +26,10 @@ eventHandler.formSuccess = function (res) {
  * @param  {object} err err object with the type of error
  */
 eventHandler.formFailure = function (err) {
-  console.error(err)
+  this.querySelectorAll('input').forEach(input => {
+    input.classList.add('is-invalid')
+  })
+  console.log(err)
 }
 
 /**
