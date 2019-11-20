@@ -9,12 +9,10 @@ store.config = {
 }
 store.playerSettings = {
   playerOne: {
-    symbol: 'X',
-    url: "https://i.imgur.com/FjKhmBc.png"
+    symbol: 'X'
   },
   playerTwo: {
-    symbol: 'O',
-    url: "https://i.imgur.com/8t3dmb6.png"
+    symbol: 'O'
   }
 }
 
