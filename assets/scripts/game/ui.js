@@ -14,8 +14,8 @@ ui.displayCellByIndex = function (v, i) {
   const id = '#cell-' + i
   const cell = $(id)
   // const url1 = 'url(' + store.playerSettings.playerOne.url + ')'
-  const url1 = "url('assets/images/X.png')"
-  const url2 = "url('assets/images/O.png')"
+  const url1 = "url('public/X.png')"
+  const url2 = "url('public/O.png')"
   switch (v) {
     case 'x':
       cell.css('background-image', url1)
