@@ -4,8 +4,6 @@ const Ui = require('../interface/Ui')
 const store = require('../store')
 const ui = new Ui()
 
-
-
 ui.displayBoard = function (board) {
   board.forEach((i, v) => $('#' + i).classList.dataset.value(v))
 }
