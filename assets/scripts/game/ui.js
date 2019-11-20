@@ -4,19 +4,20 @@ const Ui = require('../interface/Ui')
 const store = require('../store')
 const ui = new Ui()
 
+
+
 ui.displayBoard = function (board) {
-  console.log(board)
   board.forEach((i, v) => $('#' + i).classList.dataset.value(v))
 }
 
 ui.displayCellByIndex = function (v, i) {
   const id = '#cell-' + i
   const cell = $(id)
-  const url1 = 'url(' + store.playerSettings.playerOne.url + ')'
-  const url2 = 'url(' + store.playerSettings.playerTwo.url + ')'
+  // const url1 = 'url(' + store.playerSettings.playerOne.url + ')'
+  const url1 = "url('assets/images/X.png')"
+  const url2 = "url('assets/images/O.png')"
   switch (v) {
     case 'x':
-      console.log(url1)
       cell.css('background-image', url1)
       break
     case 'o':
