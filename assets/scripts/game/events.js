@@ -4,14 +4,14 @@ const EventHandler = require('../interface/EventHandler')
 const Game = require('./engine/Game')
 const api = require('./api')
 const ui = require('./ui')
-const game = new Game()
+let currentGame = null
 const eventHandler = new EventHandler()
 
 eventHandler.createGame = function (event) {
-  console.log(api)
   api.createGame()
     .then((res) => {
-      game.create(res.game.id, res.game.player_x, res.game.player_o)
+      currentGame = new Game(res.game)
+      ui.showPageById('game')
     })
     .catch(console.error)
 }
@@ -25,9 +25,26 @@ eventHandler.getStats = function (event) {
 }
 
 eventHandler.addEvents = function () {
-  $('.cell').on('click', e => game.click(e))
-  $('button[data-set-page="game"]').on('click', event => eventHandler.createGame(event))
+  $('.cell').on('click', event => currentGame.click(getIndexFromEvent(event)))
+  $('button[data-set-page="game-loading"]').on('click', event => eventHandler.createGame(event))
   $('button[data-set-page="stats"]').on('click', event => eventHandler.getStats(event))
+  $('.game-alert').hide()
 }
 
 module.exports = eventHandler
+
+function getIndexFromEvent (event) {
+  const target = event.target
+  const id = getIdFromEventTarget(target)
+  const index = getIndexFromId(id)
+  return index
+}
+
+function getIdFromEventTarget (target) {
+  const id = target.id
+  return id
+}
+
+function getIndexFromId (id) {
+  return id.charAt(id.length - 1)
+}

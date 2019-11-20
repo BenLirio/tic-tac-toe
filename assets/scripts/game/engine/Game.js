@@ -4,76 +4,74 @@ const Board = require('./Board')
 const ui = require('../ui')
 const api = require('../api')
 
-const Game = function () {
-  this._id = null
-  this._player_x = null
-  this._player_o = null
-  this._over = false
-  this._turn = true
-  this._board = new Board()
-  this._isTie = false
+const Game = function (game) {
+  this.id = game.id
+  this.player_x = game.player_x
+  this.player_o = game.player_o
+  this.over = game.over
+  this.turn = true
+  this.board = new Board(game.cells)
+  this.isTie = false
+  this.processingClick = false
 }
 
-Game.prototype.create = function (id, playerX, playerO) {
-  this._id = id
-  this._player_x = playerX
-  this._player_o = playerO
-  this._over = false
-  this._turn = true
-  this._board = new Board()
-  this._isTie = false
-  ui.resetBoard()
-}
-
-Game.prototype.click = function (event) {
-  ui.cancelInvalid()
-  const i = getIndexFromEvent(event)
-  if (this._board.cellOpen(i)) {
-    this.setCell(i)
-    if (this.checkWin()) {
-      this._over = true
-    } else if (this.isTie()) {
-      this._over = true
-      this._isTie = true
+Game.prototype.click = function (index) {
+  if (!this.processingClick) {
+    const board = this.board
+    if (board.cellOpen(index)) {
+      this.processClick(index)
+    } else {
+      this.invalidClick()
     }
-    api.updateGame(i, this._turn, this._over, this._id)
-      .then((res) => {
-        if (this._isTie) {
-          ui.showPageById('tie')
-        } else if (this._over) {
-          ui.showPageById(this._turn ? 'win' : 'loose')
-        } else {
-          this.changeTurn()
-          ui.setTurn(this._turn)
-        }
-      })
-      .catch(console.error)
-  } else {
-    ui.showInvalid()
   }
+  console.warn('Sorry for the lag waiting for server respose...')
+}
+
+Game.prototype.processClick = function (index) {
+  // move is valid
+  const value = this.setCell(index)
+  if (this.checkWin()) {
+    this.over = true
+    ui.showPageById(this.turn ? 'win' : 'lose')
+  } else if (this.checkTie()) {
+    this.isTie = true
+    ui.showPageById('tie')
+  }
+  api.updateGame(this.id, index, value, this.over)
+    .then(() => {
+      this.processingClick = false
+    })
+    .catch(console.error)
+  this.processingClick = true
+  this.changeTurn()
+}
+
+Game.prototype.invalidClick = function () {
+  ui.invalidClick()
 }
 
 Game.prototype.changeTurn = function () {
-  this._turn = !this._turn
+  this.turn = !this.turn
+  ui.setTurn(this.turn)
 }
 
 Game.prototype.setCell = function (i) {
-  this._board.setCell(this._turn, i)
+  this.board.setCell(this.turn, i)
   this.display()
 }
 
 Game.prototype.display = function () {
-  this._board.getCells().forEach((v, i) => {
+  this.board.getCells().forEach((v, i) => {
     ui.displayCellByIndex(v, i)
   })
 }
 
-Game.prototype.isTie = function () {
-  return this._board.isFull() && !this._over
+Game.prototype.checkTie = function () {
+  return this.board.isFull() && !this.over
 }
 
 Game.prototype.checkWin = function () {
-  const cells = this._board.getPlayerCells(this._turn)
+  const cells = this.board.getPlayerCells(this.turn)
   const tests = [
     /x.....x.....x/,
     /x.x.x[258]/,
@@ -81,22 +79,6 @@ Game.prototype.checkWin = function () {
     /x.......x4......x/
   ]
   return tests.some(regex => regex.test(cells))
-}
-
-function getIndexFromEvent (event) {
-  const target = event.target
-  const id = getIdFromEventTarget(target)
-  const index = getIndexFromId(id)
-  return index
-}
-
-function getIdFromEventTarget (target) {
-  const id = target.id
-  return id
-}
-
-function getIndexFromId (id) {
-  return id.charAt(id.length - 1)
 }
 
 module.exports = Game

@@ -13,18 +13,17 @@ api.createGame = function () {
   })
 }
 
-api.updateGame = function (i, turn, overInput, id) {
-  const sym = turn ? 'x' : 'o'
+api.updateGame = function (id, index, value, over) {
   return api.ajax({
     method: 'PATCH',
     url: ('games/' + id),
     data: {
       game: {
         cell: {
-          index: i,
-          value: sym
+          index,
+          value
         },
-        over: overInput
+        over
       }
     },
     auth: true

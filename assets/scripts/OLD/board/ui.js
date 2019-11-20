@@ -21,7 +21,7 @@ const setValidMove = state => {
 }
 
 const setWin = win => {
-  $('#winner').show().text(win ? 'You Win' : 'You Loose')
+  $('#winner').show().text(win ? 'You Win' : 'You Lose')
 }
 
 const setTurn = current => {

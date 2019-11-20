@@ -2,25 +2,28 @@
 
 const Cell = require('./Cell')
 
-const Board = function () {
-  this._cells = new Array(9).fill().map(v => new Cell())
+const Board = function (cells) {
+  this.cells = []
+  cells.forEach(cell => {
+    this.cells.push(new Cell(cell))
+  })
 }
 
 Board.prototype.isFull = function () {
-  return this._cells.every(cell => cell.isSet())
+  return this.cells.every(cell => cell.isSet())
 }
 
 Board.prototype.cellOpen = function (i) {
-  return !this._cells[i].isSet()
+  return !this.cells[i].isSet()
 }
 
 Board.prototype.getCells = function () {
-  return this._cells.map(v => v.getValue())
+  return this.cells.map(v => v.getValue())
 }
 
 Board.prototype.getPlayerCells = function (player) {
   const sym = player ? 'x' : 'o'
-  const array = this._cells.map((v, i) => {
+  const array = this.cells.map((v, i) => {
     if (v.getValue() === sym) {
       return ('x' + i)
     } else {
@@ -35,19 +38,21 @@ Board.prototype.setCells = function (cells) {
 }
 
 Board.prototype.setCell = function (v, i) {
+  let value = ''
   if (v === true) {
-    this._cells[i].setX()
+    value = this.cells[i].setX()
   } else if (v === false) {
-    this._cells[i].setO()
+    value = this.cells[i].setO()
   } else if (v === 'x') {
-    this._cells[i].setX()
+    value = this.cells[i].setX()
   } else if (v === 'o') {
-    this._cells[i].setO()
+    value = this.cells[i].setO()
   } else if (v === '') {
-    this._cells[i].reset()
+    value = this.cells[i].reset()
   } else {
     console.warn('Incorect cell value')
   }
+  return value
 }
 
 module.exports = Board

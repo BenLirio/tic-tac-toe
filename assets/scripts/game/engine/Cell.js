@@ -1,27 +1,33 @@
 'use strict'
 
-const Cell = function () {
-  this._value = ''
+const Cell = function (v) {
+  if (v !== 'x' && v !== 'o' && v !== '' && v !== false) {
+    console.warn(v, 'Is not a valid data type for cell')
+  }
+  this.value = v || ''
 }
 
 Cell.prototype.isSet = function () {
-  return this._value !== ''
+  return this.value !== ''
 }
 
 Cell.prototype.setX = function () {
-  this._value = 'x'
+  this.value = 'x'
+  return 'x'
 }
 
 Cell.prototype.setO = function () {
-  this._value = 'o'
+  this.value = 'o'
+  return 'o'
 }
 
 Cell.prototype.reset = function () {
-  this._value = ''
+  this.value = ''
+  return ''
 }
 
 Cell.prototype.getValue = function () {
-  return this._value
+  return this.value
 }
 
 module.exports = Cell

@@ -49,13 +49,11 @@ ui.setTurn = function (turn) {
   $('.current-turn').text('Current turn: ' + (turn ? 'x' : 'o'))
 }
 
-$('.invalid-move').hide()
-
-ui.showInvalid = function () {
-  $('.invalid-move').show()
-}
-ui.cancelInvalid = function () {
-  $('.invalid-move').hide()
+ui.invalidClick = function () {
+  $('.game-alert').show(300)
+  setTimeout(function () {
+    $('.game-alert').hide(300)
+  }, 2000)
 }
 
 module.exports = ui

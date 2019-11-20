@@ -15,6 +15,7 @@
 
 <body>
   <div class="position-absolute auth-alert alert alert-success w-100 mt-2">success</div>
+  <div class="position-absolute game-alert alert alert-info w-100 mt-2">spot taken</div>
   <!-- SIGN IN -->
   <div id="sign-in" class="page container-fluid first-page vh-100">
     <div class="row h-100 justify-content-center">
@@ -67,12 +68,12 @@
   <div id="menu" class="page container-fluid vh-100">
     <div class="row h-100 justify-content-center">
       <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
-        <div class="row mt-3"><button data-set-page="game" class="btn btn-success w-100">create game</button></div>
+        <div class="row mt-3"><button data-set-page="game-loading" class="btn btn-success w-100">create game</button>
+        </div>
         <div class="row mt-3"><button data-set-page="account" class="btn btn-info w-100">account</button></div>
         <div class="row mt-3"><button data-set-page="sign-in" class="btn btn-secondary w-100">back</button></div>
       </div>
     </div>
-    <h1>Menu</h1>
 
   </div>
   <!-- MENU>ACCOUNT -->
@@ -129,13 +130,17 @@
             <button type="submit" class="btn btn-success w-100">change</button>
           </div>
           <div class="form-group">
-            <button class="btn btn-secondary w-100" data-set-page="account">back</button>
+            <button type="button" class="btn btn-secondary w-100" data-set-page="account">back</button>
           </div>
         </form>
       </div>
     </div>
 
   </div>
+  <div id="game-loading" class="page container-fluid vh-100 bg-dark">
+
+  </div>
+
   <!-- MENU>GAME -->
   <div id="game" class="page container-fluid vh-100 bg-light">
     <div class="row h-100 justify-content-center">
@@ -159,7 +164,6 @@
             <div id="cell-8" class="col cell"></div>
           </div>
         </div>
-        <h3 class="invalid-move text-danger text-center">SPOT TAKEN</h3>
         <button data-set-page="menu" class="btn btn-secondary w-100">cancel game</button>
       </div>
     </div>
@@ -174,27 +178,27 @@
     <div class="row h-100 justify-content-center">
       <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
         <h1 class="text-center">WIN</h1>
-        <button data-set-page="game" class="btn btn-dark w-100">back</button>
+        <button data-set-page="menu" class="btn btn-dark w-100">menu</button>
       </div>
     </div>
   </div>
   <!-- MENU>GAME>LOOSE -->
-  <div id="loose" class="page container-fluid vh-100 bg-danger">
+  <div id="lose" class="page container-fluid vh-100 bg-danger">
     <div class="row h-100 justify-content-center">
       <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
-        <h1 class="text-center">Loose</h1>
-        <button data-set-page="game" class="btn btn-dark w-100">back</button>
+        <h1 class="text-center">Lose</h1>
+        <button data-set-page="menu" class="btn btn-dark w-100">menu</button>
       </div>
     </div>
-
-
-
-
   </div>
   <!-- MENU>GAME>TIE -->
-  <div id="tie" class="page">
-    <h1>Tie</h1>
-    <button data-set-page="game" class="btn btn-secondary">back</button>
+  <div id="tie" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100 justify-content-center">
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <h1 class="text-center">Tie</h1>
+        <button data-set-page="menu" class="btn btn-dark w-100">menu</button>
+      </div>
+    </div>
   </div>
   <!-- SIGN-IN PAGE -->
   <div name="sign-in" class="page">
