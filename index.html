@@ -16,11 +16,21 @@
 <body>
   <div class="position-absolute auth-alert alert alert-success w-100 mt-2">success</div>
   <div class="position-absolute game-alert alert alert-info w-100 mt-2">spot taken</div>
+  <div id="launch" class="page container-fluid first-page vh-100 bg-light first-page">
+    <div class="row h-100 bg-light">
+      <div class="col-12 my-auto">
+        <h1 class="text-center display-2 text-dark">TIC TAC TOE</h1>
+        <div class="row">
+            <button data-set-page="sign-in" class="btn btn-primary w-50 mx-auto">Launch</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- SIGN IN -->
-  <div id="sign-in" class="page container-fluid first-page vh-100">
+  <div id="sign-in" class="page container-fluid vh-100 bg-light">
     <div class="row h-100 justify-content-center">
       <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
-        <h1>Sign in</h1>
+        <h1 class="text-center">Sign in</h1>
         <form data-ajax-action="sign-in" data-set-page="menu">
           <div class="form-group">
             <input type="email" class="form-control" placeholder="Enter email" name="credentials[email]">
@@ -39,10 +49,10 @@
     </div>
   </div>
   <!-- SIGN UP -->
-  <div id="sign-up" class="page container-fluid vh-100">
+  <div id="sign-up" class="page container-fluid vh-100 bg-light">
     <div class="row h-100 justify-content-center">
       <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
-        <h1>Sign up</h1>
+        <h1 class="text-center">Sign up</h1>
         <!-- SIGN UP FORM -->
         <form data-ajax-action="sign-up" data-set-page="sign-in">
           <div class="form-group">
@@ -62,12 +72,12 @@
         </form>
       </div>
     </div>
-
   </div>
   <!-- MENU -->
-  <div id="menu" class="page container-fluid vh-100">
+  <div id="menu" class="page container-fluid vh-100 bg-light">
     <div class="row h-100 justify-content-center">
       <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <h1 class="text-center">Menu</h1>
         <div class="row mt-3"><button data-set-page="game-loading" class="btn btn-success w-100">create game</button>
         </div>
         <div class="row mt-3"><button data-set-page="account" class="btn btn-info w-100">account</button></div>
@@ -77,7 +87,7 @@
 
   </div>
   <!-- MENU>ACCOUNT -->
-  <div id="account" class="page container-fluid vh-100">
+  <div id="account" class="page container-fluid vh-100 bg-light">
     <div class="row h-100 justify-content-center">
       <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
         <div class="row mt-3">
@@ -98,7 +108,7 @@
     </div>
   </div>
   <!-- MENU>ACCOUNT>STATS -->
-  <div id="stats" class="page container-fluid vh-100">
+  <div id="stats" class="page container-fluid vh-100 bg-light">
     <div class="row h-100 justify-content-center">
       <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
         <div class="row mt-3">
@@ -117,7 +127,7 @@
     <button data-set-page="account" class="btn btn-secondary">back</button>
   </div>
   <!-- MENU>ACCOUNT>CHANGE PASSWORD -->
-  <div id="change-password" class="page container-fluid vh-100">
+  <div id="change-password" class="page container-fluid vh-100 bg-light">
     <div class="row h-100 justify-content-center">
       <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
         <h1>Change Password</h1>
@@ -135,43 +145,40 @@
         </form>
       </div>
     </div>
-
   </div>
-  <div id="game-loading" class="page container-fluid vh-100 bg-dark">
-
-  </div>
-
-  <!-- MENU>GAME -->
-  <div id="game" class="page container-fluid vh-100 bg-light">
+  <div id="game-loading" class="page container-fluid vh-100 bg-light">
     <div class="row h-100 justify-content-center">
-      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
-        <h1 class="text-center text-dark">Game</h1>
-        <h3 class="current-turn text-center text-dark">Current turn: x</h3>
-        <div class="board container">
-          <div class="cell-row row">
-            <div id="cell-0" class="col cell"></div>
-            <div id="cell-1" class="col cell"></div>
-            <div id="cell-2" class="col cell"></div>
-          </div>
-          <div class="cell-row row">
-            <div id="cell-3" class="col cell"></div>
-            <div id="cell-4" class="col cell"></div>
-            <div id="cell-5" class="col cell"></div>
-          </div>
-          <div class="cell-row row">
-            <div id="cell-6" class="col cell"></div>
-            <div id="cell-7" class="col cell"></div>
-            <div id="cell-8" class="col cell"></div>
-          </div>
+      <div class="my-auto">
+        <div class="spinner-border text-primary" style="width: 7rem; height: 7rem" role="status">
+          <span class="sr-only">Loading...</span>
         </div>
-        <button data-set-page="menu" class="btn btn-secondary w-100">cancel game</button>
       </div>
     </div>
-
-
-
-
-
+  </div>
+  <!-- MENU>GAME -->
+  <div id="game" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100">
+      <div id="board-col" class="col my-auto">
+        <h1 class="text-center text-dark mb-4">Game</h1>
+        <div class="cell-row row justify-content-center">
+          <div id="cell-0" class="col cell cell-0"></div>
+          <div id="cell-1" class="col cell cell-1"></div>
+          <div id="cell-2" class="col cell cell-2"></div>
+        </div>
+        <div class="cell-row row justify-content-center">
+          <div id="cell-3" class="col cell cell-3"></div>
+          <div id="cell-4" class="col cell cell-4"></div>
+          <div id="cell-5" class="col cell cell-5"></div>
+        </div>
+        <div class="cell-row row justify-content-center">
+          <div id="cell-6" class="col cell cell-6"></div>
+          <div id="cell-7" class="col cell cell-7"></div>
+          <div id="cell-8" class="col cell cell-8"></div>
+        </div>
+        <h3 class="current-turn text-center text-dark mt-4">Current turn: x</h3>
+        <button data-set-page="menu" class="btn btn-secondary cancel-game">cancel game</button>
+      </div>
+    </div>
   </div>
   <!-- MENU>GAME>WIN -->
   <div id="win" class="page container-fluid vh-100 bg-success">
@@ -199,88 +206,6 @@
         <button data-set-page="menu" class="btn btn-dark w-100">menu</button>
       </div>
     </div>
-  </div>
-  <!-- SIGN-IN PAGE -->
-  <div name="sign-in" class="page">
-    <!-- SIGN IN FORM -->
-    <h1>Sign-in</h1>
-    <form id="sign-in" set-page="menu" novalidate>
-      <div class="form-group">
-        <input name="credentials[email]" type="email" class="form-control" placeholder="Enter email" required>
-        <div class="invalid-feedback">
-          Please enter email
-        </div>
-      </div>
-      <div class="form-group">
-        <input name="credentials[password]" type="password" class="form-control" placeholder="password" required>
-        <div class="invalid-feedback">
-          Wrong Password
-        </div>
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Login" value class="btn btn-primary">
-      </div>
-    </form>
-    <!-- SIGN-UP FORM -->
-    <button set-page="sign-up">Sign-Up</button>
-  </div>
-  <!-- END SING-IN PAGE -->
-
-  <!-- SING-UP PAGE -->
-  <div name="sign-up" class="page">
-    <h1>Sign Up</h1>
-    <form id="sign-up" set-page="sign-in" novalidate>
-      <div class="form-group">
-        <input name="credentials[email]" class="form-control" type="email" placeholder="first.last@gmail.com" required>
-      </div>
-      <div class="form-group">
-        <input name="credentials[password]" class="form-control" type="password" placeholder="password" required>
-        <div class="invalid-feedback">
-          Enter the same password
-        </div>
-      </div>
-      <div class="form-group">
-        <input name="credentials[password_confirmation]" class="form-control" type="password"
-          placeholder="Re-Enter password" required>
-      </div>
-      <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary">
-      </div>
-    </form>
-    <button set-page="sign-in">Cancel</button>
-  </div>
-
-  <!-- MENU PAGE -->
-  <div name="menu" class="page">
-    <h1>Menu</h1>
-    <button set-page="game">play</button>
-    <!-- CHANGE-PASSWORD FORM -->
-    <h1>Change Password</h1>
-    <form id="change-password" set-valid="true" novalidate>
-      <div class="form-group">
-        <input name="passwords[old]" class="form-control" type="password" placeholder="Old Password" required>
-        <div class="invalid-feedback">
-          Incorect Password, did not change account password
-        </div>
-      </div>
-      <div class="form-group">
-        <input name="passwords[new]" class="form-control" type="password" placeholder="New Password" required>
-      </div>
-      <div class="form-group">
-        <input type="submit" class="btn btn-primary" value="Change">
-      </div>
-    </form>
-    <button set-page="stats">Stats</button>
-    <!-- LOGOUT FORM -->
-    <h1>Logout</h1>
-    <form id="sign-out" set-page="sign-in">
-      <input class="btn btn-primary" type="submit" value="Logout">
-    </form>
-  </div>
-  <div name="stats" class="page">
-    <h1>Win %</h1>
-    <h2>Comming soon</h2>
-    <button set-page="menu">back</button>
   </div>
 </body>
 

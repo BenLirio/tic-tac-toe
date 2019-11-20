@@ -1,5 +1,7 @@
 'use strict'
 
+const store = require('../../store')
+
 const Page = function (parent, ids) {
   this.parent = parent
   this.ids = ids
@@ -38,11 +40,11 @@ Navigation.prototype._showPage = function (name) {
 }
 
 const hide = (id) => {
-  $('#' + id).hide()
+  $('#' + id)[store.config.transitionOut](store.config.transitionSpeed)
 }
 
 const show = (id) => {
-  $('#' + id).show()
+  $('#' + id)[store.config.transitionIn](store.config.transitionSpeed)
 }
 
 module.exports = Navigation

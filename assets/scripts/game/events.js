@@ -11,7 +11,10 @@ eventHandler.createGame = function (event) {
   api.createGame()
     .then((res) => {
       currentGame = new Game(res.game)
-      ui.showPageById('game')
+      ui.clearBoard()
+      setTimeout(function () {
+        ui.showPageById('game')
+      }, 2000)
     })
     .catch(console.error)
 }

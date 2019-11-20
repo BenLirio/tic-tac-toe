@@ -23,8 +23,9 @@ Game.prototype.click = function (index) {
     } else {
       this.invalidClick()
     }
+  } else {
+    console.warn('Sorry for the lag waiting for server respose...')
   }
-  console.warn('Sorry for the lag waiting for server respose...')
 }
 
 Game.prototype.processClick = function (index) {
@@ -56,8 +57,10 @@ Game.prototype.changeTurn = function () {
 }
 
 Game.prototype.setCell = function (i) {
-  this.board.setCell(this.turn, i)
-  this.display()
+  setTimeout(function () {
+    this.display()
+  }.bind(this), 0)
+  return this.board.setCell(this.turn, i)
 }
 
 Game.prototype.display = function () {

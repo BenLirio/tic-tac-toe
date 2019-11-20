@@ -20,10 +20,10 @@ eventHandler.formSuccess = function (res) {
   Object.assign(store, res)
   const pageId = this.dataset.setPage
   ui.showPageById(pageId)
-  $('.auth-alert').show()
+  $('.auth-alert').show(store.config.alertTransitionSpeed)
   setTimeout(() => {
-    $('.auth-alert').hide()
-  }, 3000)
+    $('.auth-alert').hide(store.config.alertTransitionSpeed)
+  }, 2000)
 }
 
 /**

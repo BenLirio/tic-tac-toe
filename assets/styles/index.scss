@@ -1,34 +1,156 @@
 @import '~bootstrap/scss/bootstrap';
 
-.board {
-  height: 300px;
-  max-width: 300px;
+$extra-small-board: 80px;
+$small-board: $extra-small-board * 1.3;
+$medium-board: $small-board * 1.3;
+$large-board: $medium-board * 1.2;
+$extra-large-board: $large-board * 1.1;
+$border-size: 10px;
+
+.cancel-game {
+  position: fixed;
+  top: 50%;
+  left: 30px;
 }
 
 .cell {
-  border: 2px solid black;
-  height: 100px;
+  background-size: 100%;
+  padding: 0;
+  max-width: $extra-small-board;
+  height: $extra-small-board;
+  box-sizing: border-box;
+  &:after {
+    content: "";
+    background: $dark;
+    width: $border-size*0.5;
+    height: 100%;
+    position: absolute;
+    right:0;
+  }
+  &:before {
+    content: "";
+    background: $dark;
+    width: 100%;
+    height: $border-size*0.5;
+    position: absolute;
+  }
+}
+.cell-0 {
+  &:before {
+    bottom:0;
+    border-radius: $border-size*0.5 0 0 0;
+  }
+  &:after {
+    border-radius: $border-size*0.5 0 0 0;
+  }
+}
+.cell-1 {
+  border-bottom: $border-size*0.5 solid $dark;
+  &:before {
+    border-radius: 0 $border-size*0.5 0 0;
+    height: 100%;
+    width: $border-size*0.5;
+  }
+  &:after {
+    border-radius: $border-size*0.5 0 0 0;
+  }
+}
+.cell-2 {
+  &:before {
+    border-radius: 0 $border-size*0.5 0 0;
+    bottom: 0;
+  }
+  &:after {
+    border-radius: 0 $border-size*0.5 0 0;
+    left: 0;
+  }
+}
+.cell-3 {
+  border-right: $border-size*0.5 solid $dark;
+  &:after {
+    border-radius: $border-size*0.5 0 0 0;
+    width: 100%;
+    height: $border-size*0.5;
+    bottom: 0;
+  }
+  &:before {
+    border-radius: 0 0 0 $border-size*0.5;
+  }
+}
+.cell-4 {
+  &:after{
+    display: none;
+  }
+  &:before {
+    display: none;
+  }
+  border: $border-size*0.5 solid $dark;
+}
+.cell-5 {
+  border-left: $border-size*0.5 solid $dark;
+  &:after {
+    border-radius: 0 $border-size*0.5 0 0;
+    width: 100%;
+    height: $border-size*0.5;
+    bottom: 0;
+  }
+  &:before {
+    border-radius: 0 0 $border-size*0.5 0;
+  }
+}
+.cell-6 {
+  &:before {
+    border-radius: 0 0 0 $border-size*0.5;
+  }
+  &:after {
+    border-radius: 0 0 0 $border-size*0.5;
+  }
+}
+.cell-7 {
+  border-top: $border-size*0.5 solid $dark;
+  &:before {
+    border-radius: 0 0 $border-size*0.5 0;
+    width: $border-size*0.5;
+    height: 100%;
+  }
+  &:after {
+    border-radius: 0 0 0 $border-size*0.5;
+  }
+}
+.cell-8 {
+  &:after {
+    left: 0;
+    border-radius: 0 0 $border-size*0.5 0;
+  }
+  &:before {
+    border-radius: 0 0 $border-size*0.5 0;
+  }
 }
 
-.cell:nth-child(3n) {
-  border-right: 0;
+@include media-breakpoint-down(xl) {
+  .cell {
+    max-width: $extra-large-board;
+    height: $extra-large-board;
+  }
 }
-
-.cell:nth-child(1n) {
-  border-left: 0;
+@include media-breakpoint-down(lg) {
+  .cell {
+    max-width: $large-board;
+    height: $large-board;
+  }
 }
-.cell-row:nth-child(1n) > .cell {
-  border-top: 0;
+@include media-breakpoint-down(md) {
+  .cancel-game {
+    top: 60px;
+  }
+  .cell {
+    max-width: $medium-board;
+    height: $medium-board;
+  }
 }
-.cell-row:nth-child(3n) > .cell {
-  border-bottom: 0;
-}
-.redc {
-  background: red;
-}
-.x-style {
-  background: red;
-}
-.o-style {
-  background: blue;
+@include media-breakpoint-down(sm) {
+  .cell {
+    max-width: $small-board;
+    height: $small-board;
+  }
 }

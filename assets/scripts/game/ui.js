@@ -1,7 +1,7 @@
 'use strict'
 
 const Ui = require('../interface/Ui')
-
+const store = require('../store')
 const ui = new Ui()
 
 ui.displayBoard = function (board) {
@@ -10,34 +10,30 @@ ui.displayBoard = function (board) {
 }
 
 ui.displayCellByIndex = function (v, i) {
-  const text = '#cell-' + i
-  const classList = $(text)[0].classList
-  classList.remove('x-style')
-  classList.remove('o-style')
-  classList.remove('unset-style')
+  const id = '#cell-' + i
+  const cell = $(id)
+  const url1 = 'url(' + store.playerSettings.playerOne.url + ')'
+  const url2 = 'url(' + store.playerSettings.playerTwo.url + ')'
   switch (v) {
     case 'x':
-      classList.add('x-style')
+      console.log(url1)
+      cell.css('background-image', url1)
       break
     case 'o':
-      classList.add('o-style')
+      cell.css('background-image', url2)
       break
     case '':
-      classList.add('unset-style')
+      cell.text('')
       break
     default:
-      console.warn('not a style')
       break
   }
 }
 
-ui.resetBoard = function () {
+ui.clearBoard = function () {
   for (let i = 0; i < 9; i++) {
-    const text = '#cell-' + i
-    const classList = $(text)[0].classList
-    classList.remove('x-style')
-    classList.remove('o-style')
-    classList.add('unset-style')
+    const id = '#cell-' + i
+    $(id).css('background-image', '')
   }
 }
 
@@ -50,9 +46,9 @@ ui.setTurn = function (turn) {
 }
 
 ui.invalidClick = function () {
-  $('.game-alert').show(300)
+  $('.game-alert').show(store.config.transitionSpeed)
   setTimeout(function () {
-    $('.game-alert').hide(300)
+    $('.game-alert').hide(store.config.transitionSpeed)
   }, 2000)
 }
 
