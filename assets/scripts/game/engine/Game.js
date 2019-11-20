@@ -13,6 +13,7 @@ const Game = function (game) {
   this.board = new Board(game.cells)
   this.isTie = false
   this.processingClick = false
+  ui.setTurn(this.turn)
 }
 
 Game.prototype.click = function (index) {
