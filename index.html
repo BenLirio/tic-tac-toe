@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <div class="position-absolute auth-alert alert alert-success w-100 mt-2">success</div>
+  <div class="position-absolute game-alert alert alert-info w-100 mt-2">spot taken</div>
+  <div id="launch" class="page container-fluid first-page vh-100 bg-light first-page">
+    <div class="row h-100 bg-light">
+      <div class="col-12 my-auto">
+        <h1 class="text-center display-2 text-dark">TIC TAC TOE</h1>
+        <div class="row">
+            <button data-set-page="sign-in" class="btn btn-primary w-50 mx-auto">Launch</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SIGN IN -->
+  <div id="sign-in" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100 justify-content-center">
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <h1 class="text-center">Sign in</h1>
+        <form data-ajax-action="sign-in" data-set-page="menu">
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Enter email" name="credentials[email]">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="password" name="credentials[password]" autocomplete="on">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+          </div>
+          <div class="form-group">
+            <button type="button" data-set-page="sign-up" class="btn btn-link w-100">create account</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- SIGN UP -->
+  <div id="sign-up" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100 justify-content-center">
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <h1 class="text-center">Sign up</h1>
+        <!-- SIGN UP FORM -->
+        <form data-ajax-action="sign-up" data-set-page="sign-in">
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Enter new email" name="credentials[email]">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="password" name="credentials[password]" autocomplete="on">
+            <input type="password" class="form-control" placeholder="confirm password"
+              name="credentials[password_confirmation]" autocomplete="on">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success w-100">create</button>
+          </div>
+          <div class="form-group">
+            <button type="button" data-set-page="sign-in" class="btn btn-secondary w-100">back</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- MENU -->
+  <div id="menu" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100 justify-content-center">
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <h1 class="text-center">Menu</h1>
+        <div class="row mt-3"><button data-set-page="game-loading" class="btn btn-success w-100">create game</button>
+        </div>
+        <div class="row mt-3"><button data-set-page="account" class="btn btn-info w-100">account</button></div>
+      </div>
+    </div>
+
+  </div>
+  <!-- MENU>ACCOUNT -->
+  <div id="account" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100 justify-content-center">
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <div class="row mt-3">
+          <button data-set-page="stats" class="btn btn-info w-100">stats</button>
+        </div>
+        <div class="row mt-3">
+          <button data-set-page="change-password" class="btn btn-info w-100">change password</button>
+        </div>
+        <div class="row mt-3">
+          <button data-set-page="menu" class="btn btn-secondary w-100">back</button>
+        </div>
+        <div class="row mt-3">
+          <form data-ajax-action="sign-out" data-set-page="sign-in" class="w-100">
+            <button type="submit" class="btn btn-danger w-100">Logout</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MENU>ACCOUNT>STATS -->
+  <div id="stats" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100 justify-content-center">
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <div class="row mt-3">
+          <h1>Total games:</h1>
+        </div>
+        <div class="row mt-3">
+          <h1 class="total-games">0</h1>
+        </div>
+        <div class="row mt-3">
+          <button data-set-page="account" class="btn btn-secondary w-100">back</button>
+        </div>
+      </div>
+    </div>
+    <h1>Stats</h1>
+    <h1 class="total-games">0</h1>
+    <button data-set-page="account" class="btn btn-secondary">back</button>
+  </div>
+  <!-- MENU>ACCOUNT>CHANGE PASSWORD -->
+  <div id="change-password" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100 justify-content-center">
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <h1>Change Password</h1>
+        <form data-ajax-action="change-password" data-set-page="menu">
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="old password" name="passwords[old]" autocomplete="on">
+            <input type="password" class="form-control" placeholder="new password" name="passwords[new]" autocomplete="on">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-success w-100">change</button>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-secondary w-100" data-set-page="account">back</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="game-loading" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100 justify-content-center">
+      <div class="my-auto">
+        <div class="spinner-border text-primary" style="width: 7rem; height: 7rem" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MENU>GAME -->
+  <div id="game" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100">
+      <div id="board-col" class="col my-auto">
+        <h1 class="text-center text-dark mb-4">Game</h1>
+        <div class="cell-row row justify-content-center">
+          <div id="cell-0" class="col cell cell-0"></div>
+          <div id="cell-1" class="col cell cell-1"></div>
+          <div id="cell-2" class="col cell cell-2"></div>
+        </div>
+        <div class="cell-row row justify-content-center">
+          <div id="cell-3" class="col cell cell-3"></div>
+          <div id="cell-4" class="col cell cell-4"></div>
+          <div id="cell-5" class="col cell cell-5"></div>
+        </div>
+        <div class="cell-row row justify-content-center">
+          <div id="cell-6" class="col cell cell-6"></div>
+          <div id="cell-7" class="col cell cell-7"></div>
+          <div id="cell-8" class="col cell cell-8"></div>
+        </div>
+        <h3 class="current-turn text-center text-dark mt-4">Current turn: x</h3>
+        <button data-set-page="menu" class="btn btn-secondary cancel-game">cancel game</button>
+      </div>
+    </div>
+  </div>
+  <!-- MENU>GAME>WIN -->
+  <div id="win" class="page container-fluid vh-100 bg-success">
+    <div class="row h-100 justify-content-center">
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <h1 class="text-center">WIN</h1>
+        <button data-set-page="menu" class="btn btn-dark w-100">menu</button>
+      </div>
+    </div>
+  </div>
+  <!-- MENU>GAME>LOOSE -->
+  <div id="lose" class="page container-fluid vh-100 bg-danger">
+    <div class="row h-100 justify-content-center">
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <h1 class="text-center">Lose</h1>
+        <button data-set-page="menu" class="btn btn-dark w-100">menu</button>
+      </div>
+    </div>
+  </div>
+  <!-- MENU>GAME>TIE -->
+  <div id="tie" class="page container-fluid vh-100 bg-light">
+    <div class="row h-100 justify-content-center">
+      <div class="col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 my-auto">
+        <h1 class="text-center">Tie</h1>
+        <button data-set-page="menu" class="btn btn-dark w-100">menu</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
