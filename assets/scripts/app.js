@@ -4,8 +4,8 @@ const store = require('./store')
 store.config = {
   transitionSpeed: 300,
   alertTransitionSpeed: 300,
-  transitionIn: 'fadeIn',
-  transitionOut: 'fadeOut'
+  transitionIn: 'show',
+  transitionOut: 'hide'
 }
 store.playerSettings = {
   playerOne: {

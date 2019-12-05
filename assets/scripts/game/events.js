@@ -16,7 +16,7 @@ eventHandler.createGame = function (event) {
         ui.showPageById('game')
       }, 2000)
     })
-    .catch(console.error)
+    .catch()
 }
 
 eventHandler.getStats = function (event) {
@@ -24,7 +24,7 @@ eventHandler.getStats = function (event) {
     .then(res => {
       ui.stats(res.games.length)
     })
-    .catch(console.log)
+    .catch()
 }
 
 eventHandler.addEvents = function () {

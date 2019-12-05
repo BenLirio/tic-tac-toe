@@ -7,8 +7,9 @@ const navigationHandler = require('../navigation/handler')
 
 const Form = function (data) {
   this.action = data.action
-  this.res = data.res || console.log
-  this.err = data.err || console.log
+  this.blank = () => {}
+  this.res = data.res || this.blank
+  this.err = data.err || this.blank
 }
 
 Form.prototype.submit = function (event) {
@@ -17,7 +18,6 @@ Form.prototype.submit = function (event) {
   if (event.target.checkValidity()) {
     const form = event.target
     const formData = getFormFields(form)
-    console.log(formData)
     api.ajax({action: this.action, formData})
       .then(this.res.bind(event.target))
       .catch(this.err.bind(event.target))
@@ -40,7 +40,6 @@ const onSignIn = res => {
 }
 const onSignOut = () => {
   store.user = {}
-  console.log('SIGN OUT CLICKED')
   navigationHandler.goBackPage()
 }
 const invalid = function (res) {

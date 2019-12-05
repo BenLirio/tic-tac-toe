@@ -33,7 +33,6 @@ api.auth = function (action, data) {
       ajaxArgs.auth = true
       break
     default:
-      console.warn('Please Enter an action for this request')
       break
   }
   return this.ajax(ajaxArgs)

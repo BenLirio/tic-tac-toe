@@ -47,10 +47,8 @@ Board.prototype.setCell = function (v, i) {
     value = this.cells[i].setX()
   } else if (v === 'o') {
     value = this.cells[i].setO()
-  } else if (v === '') {
-    value = this.cells[i].reset()
   } else {
-    console.warn('Incorect cell value')
+    value = this.cells[i].reset()
   }
   return value
 }

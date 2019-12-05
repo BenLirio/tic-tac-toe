@@ -9,7 +9,7 @@ EventHandler.prototype.init = function () {
 }
 
 EventHandler.prototype.addEvents = function () {
-  console.debug('Please reasign addEvents:', this)
+
 }
 
 module.exports = EventHandler

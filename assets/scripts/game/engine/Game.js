@@ -24,8 +24,6 @@ Game.prototype.click = function (index) {
     } else {
       this.invalidClick()
     }
-  } else {
-    console.warn('Sorry for the lag waiting for server respose...')
   }
 }
 
@@ -43,7 +41,7 @@ Game.prototype.processClick = function (index) {
     .then(() => {
       this.processingClick = false
     })
-    .catch(console.error)
+    .catch()
   this.processingClick = true
   this.changeTurn()
 }

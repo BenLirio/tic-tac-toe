@@ -13,9 +13,13 @@ const pages = require('../navigation/pages')
 // valueMissing
 // valid
 
+const blank = function (param) {
+
+}
+
 const FormEvent = function (params) {
-  this.res = console.log
-  this.err = console.log
+  this.res = blank
+  this.err = blank
   Object.assign(this, params)
 }
 const formEvents = {}

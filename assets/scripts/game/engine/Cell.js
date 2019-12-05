@@ -1,9 +1,7 @@
 'use strict'
 
 const Cell = function (v) {
-  if (v !== 'x' && v !== 'o' && v !== '' && v !== false) {
-    console.warn(v, 'Is not a valid data type for cell')
-  }
+
   this.value = v || ''
 }
 

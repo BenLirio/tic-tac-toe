@@ -39,6 +39,11 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * README template used [PurpleBooth](https://github.com/PurpleBooth)
 
 # Project Planning
+When I first recieved this project I scanned over requirement and went to work. I read them so quickly I did not see anything about API and I jumped right into game logic. I did not write any code but I did psudo code alot of things. I figured out how to display a win condition. I found out how to check if a player has aleady chosen a spot.
+Next I went to the requirements and read through them very maticulusly. I really found that what I sould do first is user stories and wireframes. So I wrote up user stories below and drew out my wire frames. When I drew my wire frames I realy relied on the user stories for guidance.
+Following this I started brainstorming possible issues that I could run into while programing this. I talked with Chris and he helped me work through a few of those issues.
+These issues and wireframes were very helpful when it came to actauly coding out the project. They let me waste as little time as I could.
+From here there was a lot of debuging refactoring and such. It took a long time and I would always refer back to my wire frames and user stories but it was a good thing that I had them.
 * Wire Frame
 * User Stories
 * Possible Issues

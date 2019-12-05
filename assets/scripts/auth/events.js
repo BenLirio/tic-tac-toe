@@ -35,7 +35,6 @@ eventHandler.formFailure = function (err) {
   this.querySelectorAll('input').forEach(input => {
     input.classList.add('is-invalid')
   })
-  console.log(err)
 }
 
 /**
